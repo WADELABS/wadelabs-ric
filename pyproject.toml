@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wadelabs-ric"
+version = "1.2.0"
+description = "Wadelabs Release Integrity Check (RIC) - Automated SaaS Integrity Regression"
+authors = [
+    {name = "Wadelabs Integrity Engineering", email = "integrity@wadetechnologies.tech"},
+]
+dependencies = [
+    "pyyaml",
+    "pytest-playwright",
+    "playwright",
+]
+requires-python = ">=3.8"
+
+[project.scripts]
+wade-ric = "wadelabs_ric.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["wadelabs_ric*"]

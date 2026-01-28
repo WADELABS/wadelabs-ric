@@ -1,0 +1,189 @@
+policy_version: 1.1
+product: "Wadelabs Release Integrity Check (RIC)"
+mode: "commercial_audit"
+
+constraints:
+  authorized_targets_only: true
+  do_not_provide_exploit_instructions: true
+  require_evidence_for_claims: true
+  allow_abstain_unknown: true
+  no_personal_inference: true
+
+immutable_weights:
+  autonomy_first: 0.85
+  evidence_threshold: 0.90
+  precision_over_recall: 0.85
+  stability_over_novelty: 0.75
+  automation_bias: 0.95
+  standards_alignment: 0.80
+
+# What the runner expects to be given for any target system.
+target_contract:
+  required_inputs:
+    - base_url
+    - environment           # e.g., staging, prod-readonly, local
+    - auth_mode             # none | password | magic_link | sso | api_token
+  optional_inputs:
+    - test_user_standard
+    - test_user_admin
+    - tenant_ids
+    - data_export_endpoint_hint
+
+evidence_contract:
+  output_dir: "artifacts/"
+  formats:
+    playwright_trace: "zip"
+    network_log: "har"
+    assertion_log: "jsonl"
+    request_response_samples: "json"
+    artifact_hashes: "json"
+
+reporting:
+  snapshot_top_findings: 5
+  include_evidence_links: true
+  include_control_mapping: true
+  include_retest_instructions: true
+  executive_summary: true
+
+# Scope controls you can sell: Starter runs only signature checks; Pro adds deeper variants.
+service_tiers:
+  starter:
+    enabled_variants: ["base"]
+  pro:
+    enabled_variants: ["base", "edge", "pressure"]
+    include_multi_tenant: true
+
+signature_checks:
+  - id: RIC-01
+    name: Logout Reality
+    category: session
+    severity_default: critical
+    description: "Verify logout revokes server-side session and token cannot be reused."
+    variants: ["base", "edge", "pressure"]
+    pass_fail_criteria:
+      pass:
+        - "Server rejects any privileged action using tokens captured pre-logout."
+        - "New session required for sensitive actions after logout."
+      fail:
+        - "Any authenticated action succeeds with pre-logout token/session."
+      unknown:
+        - "No server-side token/session evidence available (telemetry gap)."
+    evidence_required:
+      - playwright_trace
+      - network_log
+      - assertion_log
+    control_mapping:
+      OWASP_ASVS: ["V3.4.1", "V3.5.1"]     # session mgmt examples; adjust as you finalize
+      NIST_800_53: ["SI-10", "AC-12", "AU-2"]
+
+  - id: RIC-02
+    name: Multi-Tab Double-Action
+    category: workflow
+    severity_default: high
+    description: "Verify critical actions are idempotent under double-submit/multi-tab concurrency."
+    variants: ["base", "edge", "pressure"]
+    pass_fail_criteria:
+      pass:
+        - "Repeated submissions do not create duplicate side effects."
+        - "Idempotency keys or server-side locking prevents duplicates."
+      fail:
+        - "Duplicate charge/transfer/order occurs via double-submit or multi-tab."
+      unknown:
+        - "Critical action endpoints cannot be identified from telemetry."
+    evidence_required:
+      - playwright_trace
+      - assertion_log
+    control_mapping:
+      OWASP_ASVS: ["V5.3.4"]
+      NIST_800_53: ["SI-10", "SC-23", "AU-2"]
+
+  - id: RIC-03
+    name: Role Boundary
+    category: authorization
+    severity_default: critical
+    description: "Verify authZ invariants: users cannot access admin/other-tenant resources."
+    variants: ["base", "edge"]
+    pass_fail_criteria:
+      pass:
+        - "Standard user cannot access admin routes/actions."
+        - "Cross-tenant object access is consistently denied."
+      fail:
+        - "Any cross-role or cross-tenant access succeeds or leaks data."
+      unknown:
+        - "No admin/standard accounts available to validate boundary."
+    evidence_required:
+      - request_response_samples
+      - assertion_log
+    control_mapping:
+      OWASP_ASVS: ["V4.1.1", "V4.2.1"]
+      NIST_800_53: ["AC-3", "AC-6", "AU-2"]
+
+  - id: RIC-04
+    name: Data Export Leak
+    category: data_protection
+    severity_default: critical
+    description: "Verify exports/downloads enforce authZ and do not leak cross-user data."
+    variants: ["base", "edge"]
+    pass_fail_criteria:
+      pass:
+        - "Exports require valid auth and correct tenant scope."
+        - "Export artifacts are scoped and non-guessable."
+      fail:
+        - "Export/download accessible across users/tenants or via predictable IDs."
+      unknown:
+        - "No export feature exists or cannot be exercised in environment."
+    evidence_required:
+      - artifact_hashes
+      - assertion_log
+    control_mapping:
+      OWASP_ASVS: ["V6.3.1", "V6.4.1"]
+      NIST_800_53: ["AC-3", "SC-28", "AU-2"]
+
+  - id: RIC-05
+    name: Step-Up for Sensitive Changes
+    category: auth
+    severity_default: high
+    description: "Verify sensitive operations require step-up auth (password/MFA recheck)."
+    variants: ["base", "edge", "pressure"]
+    pass_fail_criteria:
+      pass:
+        - "Sensitive changes require re-auth and/or MFA confirmation."
+        - "Recent-auth window enforced server-side."
+      fail:
+        - "Sensitive changes succeed without re-auth."
+      unknown:
+        - "MFA/reauth flows not enabled in the tested environment."
+    evidence_required:
+      - playwright_trace
+      - assertion_log
+    control_mapping:
+      OWASP_ASVS: ["V2.1.1", "V2.2.3", "V3.2.1"]
+      NIST_800_53: ["IA-2", "IA-5", "AC-12", "AU-2"]
+
+  - id: RIC-06
+    name: Integrity Drift Detector
+    category: regression
+    severity_default: critical
+    description: "Compare current run against previous baseline to detect new regressions."
+    variants: ["base"]
+    pass_fail_criteria:
+      pass:
+        - "No new failures introduced since last run."
+        - "Previous failures are either Fixed or Unchanged."
+      fail:
+        - "New regression detected (previously PASS, now FAIL)."
+      unknown:
+        - "No previous baseline available for comparison."
+    evidence_required:
+      - diff_log
+    control_mapping:
+      NIST_800_53: ["CM-3", "SI-4"]          # Configuration Change Control / System Monitoring
+
+gap_taxonomy:
+  - telemetry_gap
+  - observability_gap
+  - process_integrity_gap
+
+standards_mapping:
+  owasp_asvs: true
+  nist_800_53: true

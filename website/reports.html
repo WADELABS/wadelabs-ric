@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Wadelabs RIC | Reports</title>
+    <link href="assets/favicon.png" rel="icon" type="image/png" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Orbitron:wght@400;500;700;900&amp;family=Rajdhani:wght@300;500;700&amp;family=Space+Grotesk:wght@300;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Space Grotesk', 'sans-serif'], tech: ['Rajdhani', 'sans-serif'], orbitron: ['Orbitron', 'sans-serif'] }, colors: { background: '#000000', foreground: '#fafafa' }, animation: { 'fade-in-up': 'fade-in-up 0.8s ease-out forwards' }, keyframes: { 'fade-in-up': { 'from': { opacity: '0', transform: 'translateY(20px)' }, 'to': { opacity: '1', transform: 'translateY(0)' } } } } } }
+    </script>
+    <style>
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: clamp(3rem, 6vw, 6rem);
+            line-height: 1;
+            color: white;
+            margin-bottom: 2rem;
+            letter-spacing: 0.1em;
+        }
+
+        .glass-panel {
+            background: rgba(5, 5, 5, 0.9);
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+    </style>
+</head>
+
+<body class="bg-black min-h-screen">
+    <nav class="fixed top-0 w-full z-50 glass-panel border-b-0 border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a class="font-orbitron font-bold text-2xl tracking-widest text-white hover:text-gray-300 transition-colors"
+                href="index.html">WADELABS</a>
+            <div class="hidden md:flex space-x-6 font-tech tracking-wide text-sm text-gray-400">
+                <a class="hover:text-white transition-colors" href="how-it-works.html">HOW IT WORKS</a>
+                <a class="hover:text-white transition-colors" href="what-we-find.html">WHAT WE FIND</a>
+                <a class="text-white" href="reports.html">REPORTS</a>
+                <a class="hover:text-white transition-colors" href="pricing.html">PRICING</a>
+                <a class="hover:text-white transition-colors" href="trust.html">TRUST</a>
+            </div>
+            <a class="px-6 py-2 bg-white text-black font-bold font-tech text-sm tracking-wider hover:bg-gray-200 transition-colors"
+                href="snapshot.html">
+                RUN SCAN
+            </a>
+        </div>
+    </nav>
+    <div class="fixed inset-0 z-0 opacity-20 pointer-events-none">
+        <video autoplay="" class="w-full h-full object-cover" loop="" muted="" playsinline="">
+            <source src="assets/hero-video.mp4" type="video/mp4" />
+        </video>
+    </div>
+    <main class="relative z-10 pt-40 pb-20 px-6">
+        <div class="max-w-5xl mx-auto">
+            <h1 class="hero-title animate-fade-in-up">REPORTS</h1>
+            <p class="max-w-3xl font-display text-gray-300 mt-6 mb-12 leading-relaxed">
+                Every RIC finding is <span class="text-white">evidence-backed</span> and designed to be defensible in
+                audits,
+                incident review, and executive risk conversations.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div class="glass-panel p-8">
+                    <h2 class="font-orbitron text-xl text-white mb-4">INTEGRITY SNAPSHOT</h2>
+                    <ul class="text-sm font-mono text-gray-300 space-y-2">
+                        <li>&gt; Pass / Fail / Unknown per invariant</li>
+                        <li>&gt; Top critical integrity gaps</li>
+                        <li>&gt; Fix priority (impact-first)</li>
+                        <li>&gt; Control mapping (OWASP ASVS / NIST 800-53)</li>
+                    </ul>
+                </div>
+                <div class="glass-panel p-8">
+                    <h2 class="font-orbitron text-xl text-white mb-4">EVIDENCE BUNDLE</h2>
+                    <ul class="text-sm font-mono text-gray-300 space-y-2">
+                        <li>&gt; Playwright trace (repro proof)</li>
+                        <li>&gt; Network logs / request-response samples</li>
+                        <li>&gt; Assertion transcript</li>
+                        <li>&gt; Sanitized artifacts &amp; hashes (where applicable)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="glass-panel p-10 mb-12">
+                <h2 class="font-orbitron text-xl text-white mb-4">DRIFT REGRESSION TIMELINE</h2>
+                <p class="text-gray-300 font-display leading-relaxed">
+                    RIC compares runs to show exactly what changed since the last release:
+                    what regressed, what was fixed, and what remains unresolved.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                    <div class="p-6 border border-white/10 bg-black/20">
+                        <div class="font-mono text-xs text-green-400">NEW</div>
+                        <div class="font-orbitron text-white mt-2">Introduced</div>
+                        <p class="text-sm text-gray-400 mt-2">New integrity breaks since baseline.</p>
+                    </div>
+                    <div class="p-6 border border-white/10 bg-black/20">
+                        <div class="font-mono text-xs text-blue-400">FIXED</div>
+                        <div class="font-orbitron text-white mt-2">Closed</div>
+                        <p class="text-sm text-gray-400 mt-2">Verified closures with evidence.</p>
+                    </div>
+                    <div class="p-6 border border-white/10 bg-black/20">
+                        <div class="font-mono text-xs text-yellow-400">UNCHANGED</div>
+                        <div class="font-orbitron text-white mt-2">Persistent</div>
+                        <p class="text-sm text-gray-400 mt-2">Known gaps still present.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="glass-panel p-10">
+                <h2 class="font-orbitron text-xl text-white mb-4">SANITIZED PUBLIC CASES</h2>
+                <p class="text-gray-300 font-display leading-relaxed">
+                    Public examples show outcomes and remediation without disclosing exploit steps or client details.
+                    Full evidence remains private to authorized targets.
+                </p>
+                <div class="mt-8 flex flex-col md:flex-row gap-4">
+                    <a class="px-8 py-4 bg-white text-black font-orbitron font-bold tracking-wider hover:bg-gray-200 transition-colors text-center"
+                        href="pricing.html">ENABLE WEEKLY MONITORING</a>
+                    <a class="px-8 py-4 border border-white/20 hover:border-white/60 text-white font-orbitron font-bold tracking-wider transition-colors text-center"
+                        href="trust.html">SCOPE &amp; TRUST</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="relative z-10 py-24 text-center border-t border-white/10">
+        <h2 class="font-orbitron text-4xl mb-8 text-white drop-shadow-lg">STOP SHIPPING BLIND.</h2>
+        <a class="inline-block px-12 py-5 bg-white text-black font-bold font-orbitron tracking-wider hover:bg-gray-200 transition-colors"
+            href="snapshot.html">
+            RUN INTEGRITY SNAPSHOT
+        </a>
+        <div class="mt-12 text-gray-600 font-tech text-sm">
+            © 2026 WADELABS INTEGRITY ENGINEERING
+        </div>
+    </footer>
+</body>
+
+</html>

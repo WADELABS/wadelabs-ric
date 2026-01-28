@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Wadelabs RIC | What We Find</title>
+    <link href="assets/favicon.png" rel="icon" type="image/png" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Orbitron:wght@400;500;700;900&amp;family=Rajdhani:wght@300;500;700&amp;family=Space+Grotesk:wght@300;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Space Grotesk', 'sans-serif'], tech: ['Rajdhani', 'sans-serif'], orbitron: ['Orbitron', 'sans-serif'] }, colors: { background: '#000000', foreground: '#fafafa' }, animation: { 'fade-in-up': 'fade-in-up 0.8s ease-out forwards' }, keyframes: { 'fade-in-up': { 'from': { opacity: '0', transform: 'translateY(20px)' }, 'to': { opacity: '1', transform: 'translateY(0)' } } } } } }
+    </script>
+    <style>
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: clamp(3rem, 6vw, 6rem);
+            line-height: 1;
+            color: white;
+            margin-bottom: 2rem;
+            letter-spacing: 0.1em;
+        }
+
+        .glass-panel {
+            background: rgba(5, 5, 5, 0.9);
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+    </style>
+</head>
+
+<body class="bg-black min-h-screen">
+    <nav class="fixed top-0 w-full z-50 glass-panel border-b-0 border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a class="font-orbitron font-bold text-2xl tracking-widest text-white hover:text-gray-300 transition-colors"
+                href="index.html">WADELABS</a>
+            <div class="hidden md:flex space-x-6 font-tech tracking-wide text-sm text-gray-400">
+                <a class="hover:text-white transition-colors" href="how-it-works.html">HOW IT WORKS</a>
+                <a class="text-white" href="what-we-find.html">WHAT WE FIND</a>
+                <a class="hover:text-white transition-colors" href="reports.html">REPORTS</a>
+                <a class="hover:text-white transition-colors" href="pricing.html">PRICING</a>
+                <a class="hover:text-white transition-colors" href="trust.html">TRUST</a>
+            </div>
+            <a class="px-6 py-2 bg-white text-black font-bold font-tech text-sm tracking-wider hover:bg-gray-200 transition-colors"
+                href="snapshot.html">
+                RUN SCAN
+            </a>
+        </div>
+    </nav>
+    <div class="fixed inset-0 z-0 opacity-20 pointer-events-none">
+        <video autoplay="" class="w-full h-full object-cover" loop="" muted="" playsinline="">
+            <source src="assets/hero-video.mp4" type="video/mp4" />
+        </video>
+    </div>
+    <main class="relative z-10 pt-40 pb-20 px-6">
+        <div class="max-w-5xl mx-auto">
+            <h1 class="hero-title animate-fade-in-up">WHAT WE FIND</h1>
+            <p class="max-w-3xl font-display text-gray-300 mt-6 mb-12 leading-relaxed">
+                Scanners find vulnerabilities. RIC finds <span class="text-white">invariant breaks</span> —
+                the gaps between secure code and a circumstance-driven user.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in-up">
+                <div class="glass-panel p-8">
+                    <h2 class="font-orbitron text-xl text-white mb-4">SESSION INTEGRITY FAILURES</h2>
+                    <ul class="text-sm font-mono text-gray-300 space-y-2">
+                        <li>&gt; Logout does not revoke server-side authorization</li>
+                        <li>&gt; Stale elevated sessions persist</li>
+                        <li>&gt; Step-up missing for sensitive changes</li>
+                        <li>&gt; Recovery flows that bypass re-authentication</li>
+                    </ul>
+                </div>
+                <div class="glass-panel p-8">
+                    <h2 class="font-orbitron text-xl text-white mb-4">WORKFLOW DOUBLE-EXECUTION</h2>
+                    <ul class="text-sm font-mono text-gray-300 space-y-2">
+                        <li>&gt; Multi-tab / double-submit applies actions twice</li>
+                        <li>&gt; Retries cause duplicated side effects</li>
+                        <li>&gt; Webhook replay vulnerabilities</li>
+                        <li>&gt; Non-idempotent “confirm” endpoints</li>
+                    </ul>
+                </div>
+                <div class="glass-panel p-8">
+                    <h2 class="font-orbitron text-xl text-white mb-4">AUTHORIZATION DRIFT</h2>
+                    <ul class="text-sm font-mono text-gray-300 space-y-2">
+                        <li>&gt; Role boundaries regress after refactors</li>
+                        <li>&gt; Cross-tenant object exposure</li>
+                        <li>&gt; Admin features reachable from user context</li>
+                        <li>&gt; Cache contamination across roles/tenants</li>
+                    </ul>
+                </div>
+                <div class="glass-panel p-8">
+                    <h2 class="font-orbitron text-xl text-white mb-4">EXPORT &amp; ARTIFACT LEAKAGE</h2>
+                    <ul class="text-sm font-mono text-gray-300 space-y-2">
+                        <li>&gt; Predictable export URLs</li>
+                        <li>&gt; Download artifacts leaking across users</li>
+                        <li>&gt; Improper authorization on background jobs</li>
+                        <li>&gt; Incomplete redaction / stale cache data</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="glass-panel p-10 mb-12">
+                <h2 class="font-orbitron text-xl text-white mb-4">BILLING &amp; ENTITLEMENT DRIFT</h2>
+                <p class="text-gray-300 font-display leading-relaxed">
+                    Some of the most expensive integrity failures are entitlement mismatches: access that persists after
+                    cancel,
+                    refunds that don’t revoke value, and subscriptions that desynchronize across services.
+                </p>
+                <ul class="mt-6 text-sm font-mono text-gray-300 space-y-2">
+                    <li>&gt; Cancel without access revocation</li>
+                    <li>&gt; Refund without entitlement rollback</li>
+                    <li>&gt; Plan upgrades that skip enforcement gates</li>
+                </ul>
+            </div>
+            <div class="glass-panel p-10">
+                <h2 class="font-orbitron text-xl text-white mb-4">PRESSURE VARIANTS (PRO)</h2>
+                <p class="text-gray-300 font-display leading-relaxed">
+                    Integrity failures often appear only under retries, latency, degraded dependencies, and real
+                    incident conditions.
+                    Pro runs stress variants to surface drift that “works fine” in normal paths.
+                </p>
+                <div class="mt-8 flex flex-col md:flex-row gap-4">
+                    <a class="px-8 py-4 bg-white text-black font-orbitron font-bold tracking-wider hover:bg-gray-200 transition-colors text-center"
+                        href="reports.html">SEE REPORTS</a>
+                    <a class="px-8 py-4 border border-white/20 hover:border-white/60 text-white font-orbitron font-bold tracking-wider transition-colors text-center"
+                        href="pricing.html">VIEW PRICING</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="relative z-10 py-24 text-center border-t border-white/10">
+        <h2 class="font-orbitron text-4xl mb-8 text-white drop-shadow-lg">STOP SHIPPING BLIND.</h2>
+        <a class="inline-block px-12 py-5 bg-white text-black font-bold font-orbitron tracking-wider hover:bg-gray-200 transition-colors"
+            href="snapshot.html">
+            RUN INTEGRITY SNAPSHOT
+        </a>
+        <div class="mt-12 text-gray-600 font-tech text-sm">
+            © 2026 WADELABS INTEGRITY ENGINEERING
+        </div>
+    </footer>
+</body>
+
+</html>

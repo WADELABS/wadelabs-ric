@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Wadelabs RIC | Free Snapshot</title>
+    <link href="assets/favicon.png" rel="icon" type="image/png" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Orbitron:wght@400;500;700;900&amp;family=Rajdhani:wght@300;500;700&amp;family=Space+Grotesk:wght@300;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Space Grotesk', 'sans-serif'], tech: ['Rajdhani', 'sans-serif'], orbitron: ['Orbitron', 'sans-serif'] }, colors: { background: '#000000', foreground: '#fafafa' }, animation: { 'fade-in-up': 'fade-in-up 0.8s ease-out forwards', 'scan': 'scan 2s linear infinite' }, keyframes: { 'fade-in-up': { 'from': { opacity: '0', transform: 'translateY(20px)' }, 'to': { opacity: '1', transform: 'translateY(0)' } }, 'scan': { '0%': { transform: 'translateY(-100%)' }, '100%': { transform: 'translateY(100%)' } } } } } }
+    </script>
+    <style>
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 2rem;
+            letter-spacing: 0.1em;
+        }
+
+        .glass-panel {
+            background: rgba(5, 5, 5, 0.9);
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+    </style>
+</head>
+
+<body class="bg-black min-h-screen flex flex-col">
+    <nav class="fixed top-0 w-full z-50 glass-panel border-b-0 border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a class="font-orbitron font-bold text-2xl tracking-widest text-white hover:text-gray-300 transition-colors"
+                href="index.html">WADELABS</a>
+            <a class="text-sm font-tech text-gray-400 hover:text-white" href="pricing.html">CLOSE X</a>
+        </div>
+    </nav>
+    <div class="fixed inset-0 z-0 opacity-20 pointer-events-none">
+        <video autoplay="" class="w-full h-full object-cover" loop="" muted="" playsinline="">
+            <source src="assets/hero-video.mp4" type="video/mp4" />
+        </video>
+    </div>
+    <main class="relative z-10 flex-1 flex items-center justify-center px-6 pt-20">
+        <div class="w-full max-w-lg">
+            <!-- FORM STATE -->
+            <div class="glass-panel p-8 md:p-12 animate-fade-in-up" id="capture-form">
+                <h1 class="font-orbitron text-2xl mb-2 text-white text-center">FREE INTEGRITY BASELINE</h1>
+                <p class="font-display text-gray-400 text-center mb-8">
+                    Run a fast baseline across release-critical invariants (session, role boundaries, sensitive
+                    actions).
+                    Evidence is captured automatically.
+                </p>
+                <form class="space-y-6" onsubmit="runScan(event)">
+                    <div>
+                        <label class="block font-tech text-sm text-gray-300 mb-2">TARGET URL (STAGING / PREVIEW)</label>
+                        <input
+                            class="w-full bg-white/5 border border-white/10 p-3 text-white focus:border-white/50 outline-none font-mono text-sm"
+                            placeholder="https://staging.myapp.com" required="" type="url" />
+                    </div>
+                    <div>
+                        <label class="block font-tech text-sm text-gray-300 mb-2">EMAIL REPORT TO</label>
+                        <input
+                            class="w-full bg-white/5 border border-white/10 p-3 text-white focus:border-white/50 outline-none font-mono text-sm"
+                            placeholder="eng@company.com" required="" type="email" />
+                    </div>
+                    <button
+                        class="w-full py-4 bg-white text-black font-orbitron font-bold tracking-wider hover:bg-gray-200 transition-colors"
+                        type="submit">
+                        START BASELINE
+                    </button>
+                    <p class="text-xs text-gray-600 text-center mt-4 font-tech">
+                        By running this, you confirm you are authorized to test this URL.
+                    </p>
+                </form>
+            </div>
+            <!-- LOADING STATE -->
+            <div class="hidden glass-panel p-12 text-center animate-fade-in-up relative overflow-hidden"
+                id="scan-state">
+                <div
+                    class="absolute inset-0 bg-gradient-to-b from-transparent via-green-500/10 to-transparent h-full w-full animate-scan pointer-events-none">
+                </div>
+                <div class="font-orbitron text-2xl text-white mb-4 animate-pulse">ANALYZING INVARIANTS...</div>
+                <div class="font-mono text-sm text-green-500 space-y-2 text-left bg-black/50 p-4 border border-white/10 h-32 overflow-hidden"
+                    id="terminal-output">
+                    &gt; Initializing runner...<br />
+                    &gt; Navigating to target...<br />
+                    &gt; Capturing session state...<br />
+                    &gt; Verifying role boundaries...<br />
+                </div>
+            </div>
+            <!-- RESULT STATE -->
+            <div class="hidden glass-panel p-12 text-center animate-fade-in-up" id="result-state">
+                <div
+                    class="w-16 h-16 bg-yellow-500/20 text-yellow-400 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold border border-yellow-500">
+                    !
+                </div>
+                <h2 class="font-orbitron text-2xl text-white mb-2">BASELINE COMPLETE</h2>
+                <p class="font-display text-gray-300 mb-6">
+                    Example output: Integrity deviation detected. Full results include evidence artifacts and control
+                    mapping.
+                </p>
+                <div class="bg-white/5 p-4 mb-8 text-left border border-white/10">
+                    <div class="font-mono text-xs text-gray-300 mb-2">EVIDENCE ARTIFACT (EXAMPLE)</div>
+                    <div class="flex items-center gap-2 text-sm text-yellow-300">
+                        <span>📄 evidence_bundle_example.zip</span>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-400 mb-8">A report template is shown here for demonstration. Real runs
+                    attach evidence for each claim.</p>
+                <a class="block w-full py-4 bg-white text-black font-orbitron font-bold tracking-wider hover:bg-gray-200 transition-colors"
+                    href="pricing.html">
+                    ENABLE WEEKLY MONITORING
+                </a>
+                <a class="block w-full py-4 mt-4 border border-white/20 hover:border-white/60 text-white font-orbitron font-bold tracking-wider transition-colors"
+                    href="reports.html">
+                    SEE REPORT FORMAT
+                </a>
+            </div>
+        </div>
+    </main>
+    <script>
+        function runScan(e) {
+            e.preventDefault();
+
+            // Switch to Scan
+            document.getElementById('capture-form').classList.add('hidden');
+            document.getElementById('scan-state').classList.remove('hidden');
+
+            const term = document.getElementById('terminal-output');
+            const logs = [
+                "> Testing Logout Revocation...",
+                "> Replaying token...",
+                "> ASSERTION FAILED: 200 OK received (Expected 401)",
+                "> Generating Evidence bundle..."
+            ];
+
+            let i = 0;
+            const interval = setInterval(() => {
+                if (i < logs.length) {
+                    term.innerHTML += logs[i] + "<br>";
+                    i++;
+                } else {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        document.getElementById('scan-state').classList.add('hidden');
+                        document.getElementById('result-state').classList.remove('hidden');
+                    }, 1000);
+                }
+            }, 800);
+        }
+    </script>
+</body>
+
+</html>
