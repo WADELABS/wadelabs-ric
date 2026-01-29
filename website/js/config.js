@@ -3,13 +3,13 @@
  */
 
 const CONFIG = {
-    // PUBLIC KEY - Safe to get from environment or build
-    stripePublishableKey: 'pk_test_REPLACE_WITH_REAL_KEY',
+    // PUBLIC KEY
+    stripePublishableKey: 'pk_test_51SuidpEcU4RfdUABsfMyw7YIDaRqDkKWYL06VHrvRERr2Ie8pMAdMiTpF0w7POjzX6rLSVNJpj4dRIfShZTkgFtM00pyEP4Vro',
 
-    // PRICE IDs - Map plans to Stripe Price IDs
+    // PRICE IDs
     stripePriceIds: {
-        'starter': 'price_1234567890', // $499/mo
-        'pro': 'price_0987654321',     // $1500/mo
-        'audit': 'price_1122334455'    // $2500 one-time
+        'starter': 'price_1Qm40fEcU4RfdUABmB2Pxhd5', // $499/mo
+        'pro': 'price_1Qm40fEcU4RfdUABXzXjJq8C',     // $1500/mo
+        'audit': 'price_1Qm40fEcU4RfdUABW0j6fD7f'    // $2500 one-time
     }
 };
