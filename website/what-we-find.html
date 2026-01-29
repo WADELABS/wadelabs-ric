@@ -57,80 +57,103 @@
             <source src="assets/hero-video.mp4" type="video/mp4" />
         </video>
     </div>
+    <!-- Hero -->
     <main class="relative z-10 pt-40 pb-20 px-6">
-        <div class="max-w-5xl mx-auto">
-            <h1 class="hero-title animate-fade-in-up">WHAT WE FIND</h1>
-            <p class="max-w-3xl font-display text-gray-300 mt-6 mb-12 leading-relaxed">
-                Scanners find vulnerabilities. RIC finds <span class="text-white">invariant breaks</span> —
-                the gaps between secure code and a circumstance-driven user.
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="hero-title mb-8 animate-fade-in-up delay-100">SYSTEM INTEGRITY GAPS SCANNERS MISS</h1>
+            <p
+                class="max-w-3xl mx-auto text-xl md:text-2xl font-display text-gray-300 mb-12 leading-relaxed animate-fade-in-up delay-200">
+                Scanners find vulnerabilities. <span class="text-white">RIC finds invariant breaks</span> — the gap
+                between secure code and real-world behavior.
             </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in-up">
+        </div>
+    </main>
+
+    <!-- Categories Grid -->
+    <section class="relative z-10 py-24 bg-black/50 backdrop-blur-sm border-t border-white/10">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="glass-panel p-8">
-                    <h2 class="font-orbitron text-xl text-white mb-4">SESSION INTEGRITY FAILURES</h2>
-                    <ul class="text-sm font-mono text-gray-300 space-y-2">
-                        <li>&gt; Logout does not revoke server-side authorization</li>
-                        <li>&gt; Stale elevated sessions persist</li>
-                        <li>&gt; Step-up missing for sensitive changes</li>
-                        <li>&gt; Recovery flows that bypass re-authentication</li>
+                    <h3 class="font-orbitron text-white text-lg mb-4">SESSION INTEGRITY FAILURES</h3>
+                    <ul class="space-y-3 font-mono text-sm text-gray-400">
+                        <li>> logout tokens remain valid</li>
+                        <li>> elevated sessions persist</li>
+                        <li>> step-up authentication not enforced</li>
                     </ul>
                 </div>
                 <div class="glass-panel p-8">
-                    <h2 class="font-orbitron text-xl text-white mb-4">WORKFLOW DOUBLE-EXECUTION</h2>
-                    <ul class="text-sm font-mono text-gray-300 space-y-2">
-                        <li>&gt; Multi-tab / double-submit applies actions twice</li>
-                        <li>&gt; Retries cause duplicated side effects</li>
-                        <li>&gt; Webhook replay vulnerabilities</li>
-                        <li>&gt; Non-idempotent “confirm” endpoints</li>
+                    <h3 class="font-orbitron text-white text-lg mb-4">WORKFLOW DOUBLE-EXECUTION</h3>
+                    <ul class="space-y-3 font-mono text-sm text-gray-400">
+                        <li>> multi-tab duplicate actions</li>
+                        <li>> retry storms causing double effects</li>
+                        <li>> webhook replay vulnerabilities</li>
                     </ul>
                 </div>
                 <div class="glass-panel p-8">
-                    <h2 class="font-orbitron text-xl text-white mb-4">AUTHORIZATION DRIFT</h2>
-                    <ul class="text-sm font-mono text-gray-300 space-y-2">
-                        <li>&gt; Role boundaries regress after refactors</li>
-                        <li>&gt; Cross-tenant object exposure</li>
-                        <li>&gt; Admin features reachable from user context</li>
-                        <li>&gt; Cache contamination across roles/tenants</li>
+                    <h3 class="font-orbitron text-white text-lg mb-4">AUTHORIZATION DRIFT</h3>
+                    <ul class="space-y-3 font-mono text-sm text-gray-400">
+                        <li>> role boundary regression</li>
+                        <li>> admin access persistence</li>
+                        <li>> cross-tenant object exposure</li>
                     </ul>
                 </div>
                 <div class="glass-panel p-8">
-                    <h2 class="font-orbitron text-xl text-white mb-4">EXPORT &amp; ARTIFACT LEAKAGE</h2>
-                    <ul class="text-sm font-mono text-gray-300 space-y-2">
-                        <li>&gt; Predictable export URLs</li>
-                        <li>&gt; Download artifacts leaking across users</li>
-                        <li>&gt; Improper authorization on background jobs</li>
-                        <li>&gt; Incomplete redaction / stale cache data</li>
+                    <h3 class="font-orbitron text-white text-lg mb-4">DATA EXPORT & ARTIFACT LEAKAGE</h3>
+                    <ul class="space-y-3 font-mono text-sm text-gray-400">
+                        <li>> predictable export URLs</li>
+                        <li>> tenant bleed in downloads</li>
+                        <li>> cached responses leaking data</li>
                     </ul>
                 </div>
-            </div>
-            <div class="glass-panel p-10 mb-12">
-                <h2 class="font-orbitron text-xl text-white mb-4">BILLING &amp; ENTITLEMENT DRIFT</h2>
-                <p class="text-gray-300 font-display leading-relaxed">
-                    Some of the most expensive integrity failures are entitlement mismatches: access that persists after
-                    cancel,
-                    refunds that don’t revoke value, and subscriptions that desynchronize across services.
-                </p>
-                <ul class="mt-6 text-sm font-mono text-gray-300 space-y-2">
-                    <li>&gt; Cancel without access revocation</li>
-                    <li>&gt; Refund without entitlement rollback</li>
-                    <li>&gt; Plan upgrades that skip enforcement gates</li>
-                </ul>
-            </div>
-            <div class="glass-panel p-10">
-                <h2 class="font-orbitron text-xl text-white mb-4">PRESSURE VARIANTS (PRO)</h2>
-                <p class="text-gray-300 font-display leading-relaxed">
-                    Integrity failures often appear only under retries, latency, degraded dependencies, and real
-                    incident conditions.
-                    Pro runs stress variants to surface drift that “works fine” in normal paths.
-                </p>
-                <div class="mt-8 flex flex-col md:flex-row gap-4">
-                    <a class="px-8 py-4 bg-white text-black font-orbitron font-bold tracking-wider hover:bg-gray-200 transition-colors text-center"
-                        href="reports.html">SEE REPORTS</a>
-                    <a class="px-8 py-4 border border-white/20 hover:border-white/60 text-white font-orbitron font-bold tracking-wider transition-colors text-center"
-                        href="pricing.html">VIEW PRICING</a>
+                <div class="glass-panel p-8">
+                    <h3 class="font-orbitron text-white text-lg mb-4">BILLING & ENTITLEMENT DRIFT</h3>
+                    <ul class="space-y-3 font-mono text-sm text-gray-400">
+                        <li>> duplicate charges</li>
+                        <li>> access retained after cancellation</li>
+                        <li>> refund and credit loops</li>
+                    </ul>
+                </div>
+                <div class="glass-panel p-8">
+                    <h3 class="font-orbitron text-white text-lg mb-4">STATE DESYNCHRONIZATION</h3>
+                    <ul class="space-y-3 font-mono text-sm text-gray-400">
+                        <li>> partial failures across services</li>
+                        <li>> inconsistent auth state</li>
+                        <li>> race conditions under latency</li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </main>
+    </section>
+
+    <!-- Pressure Variants -->
+    <section class="relative z-10 py-24">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="glass-panel p-12 text-center">
+                <h2 class="section-title mb-8">PRESSURE REVEALS THE REAL FAILURES</h2>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8 text-left">
+                    <div class="p-6 border border-white/10 bg-white/5">
+                        <div class="font-orbitron text-white">LATENCY</div>
+                        <p class="text-xs text-gray-400 mt-2">Artificial delays to provoke race conditions.</p>
+                    </div>
+                    <div class="p-6 border border-white/10 bg-white/5">
+                        <div class="font-orbitron text-white">RETRY STORMS</div>
+                        <p class="text-xs text-gray-400 mt-2">High-concurrency replays of idempotent actions.</p>
+                    </div>
+                    <div class="p-6 border border-white/10 bg-white/5">
+                        <div class="font-orbitron text-white">AUTH DEGRADATION</div>
+                        <p class="text-xs text-gray-400 mt-2">Testing behavior when providers are slow/down.</p>
+                    </div>
+                    <div class="p-6 border border-white/10 bg-white/5">
+                        <div class="font-orbitron text-white">INCIDENT MODE</div>
+                        <p class="text-xs text-gray-400 mt-2">Stress-testing critical rollback paths.</p>
+                    </div>
+                </div>
+                <p class="text-lg text-white font-orbitron tracking-wider">
+                    THIS IS WHERE PRODUCTION FAILURES ACTUALLY SURFACE.
+                </p>
+            </div>
+        </div>
+    </section>
     <footer class="relative z-10 py-24 text-center border-t border-white/10">
         <h2 class="font-orbitron text-4xl mb-8 text-white drop-shadow-lg">STOP SHIPPING BLIND.</h2>
         <a class="inline-block px-12 py-5 bg-white text-black font-bold font-orbitron tracking-wider hover:bg-gray-200 transition-colors"

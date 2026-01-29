@@ -1,35 +1,61 @@
 /**
- * Wadelabs RIC - Stripe Checkout Stub
- * Simulates redirect to Stripe Payment Links
+ * Wadelabs RIC - Stripe Integration (v1.2)
+ * Handles checkout redirection using Stripe.js
  */
 
-const STRIPE_LINKS = {
-    'starter': 'https://buy.stripe.com/test_starter_plan',
-    'pro': 'https://buy.stripe.com/test_pro_plan',
-    'audit': 'https://buy.stripe.com/test_audit_one_time'
-};
+// Initialize Stripe Promise
+let stripePromise = null;
 
-function startCheckout(planIds) {
-    console.log(`Initiating checkout for plan: ${planIds}`);
+function getStripe() {
+    if (!stripePromise) {
+        if (!CONFIG.stripePublishableKey.includes('pk_test')) {
+            console.error('Stripe Publishable Key not configured in js/config.js');
+            return null;
+        }
+        stripePromise = Stripe(CONFIG.stripePublishableKey);
+    }
+    return stripePromise;
+}
 
+async function startCheckout(planKey) {
     const btn = event.target;
     const originalText = btn.innerText;
 
-    // Simulate loading state
+    // Loading State
     btn.innerText = 'REDIRECTING...';
     btn.classList.add('opacity-75', 'cursor-not-allowed');
+    btn.disabled = true;
 
-    setTimeout(() => {
-        // In production, this would be Stripe.redirectToCheckout or window.location
-        if (STRIPE_LINKS[planIds]) {
-            alert(`[STUB] Redirecting to Stripe Checkout for ${planIds.toUpperCase()}\nURL: ${STRIPE_LINKS[planIds]}`);
-            // window.location.href = STRIPE_LINKS[planId];
-        } else {
-            console.error('Unknown plan ID');
+    try {
+        const stripe = await getStripe();
+        if (!stripe) {
+            alert("Payment configuration missing. Please contact sales.");
+            throw new Error("Stripe not initialized");
         }
 
-        // Reset for demo
+        const priceId = CONFIG.stripePriceIds[planKey];
+        if (!priceId) {
+            throw new Error(`Unknown plan key: ${planKey}`);
+        }
+
+        // Redirect to Checkout
+        const { error } = await stripe.redirectToCheckout({
+            lineItems: [{ price: priceId, quantity: 1 }],
+            mode: planKey === 'audit' ? 'payment' : 'subscription',
+            successUrl: window.location.origin + '/success.html',
+            cancelUrl: window.location.origin + '/pricing.html',
+        });
+
+        if (error) {
+            throw error;
+        }
+
+    } catch (err) {
+        console.error('Checkout Error:', err);
+        alert('Could not initiate checkout. Redirecting to contact page...');
+        // Fallback or specific error handling
         btn.innerText = originalText;
         btn.classList.remove('opacity-75', 'cursor-not-allowed');
-    }, 1000);
+        btn.disabled = false;
+    }
 }

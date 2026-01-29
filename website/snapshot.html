@@ -46,113 +46,66 @@
             <source src="assets/hero-video.mp4" type="video/mp4" />
         </video>
     </div>
-    <main class="relative z-10 flex-1 flex items-center justify-center px-6 pt-20">
-        <div class="w-full max-w-lg">
-            <!-- FORM STATE -->
-            <div class="glass-panel p-8 md:p-12 animate-fade-in-up" id="capture-form">
-                <h1 class="font-orbitron text-2xl mb-2 text-white text-center">FREE INTEGRITY BASELINE</h1>
-                <p class="font-display text-gray-400 text-center mb-8">
-                    Run a fast baseline across release-critical invariants (session, role boundaries, sensitive
-                    actions).
-                    Evidence is captured automatically.
-                </p>
-                <form class="space-y-6" onsubmit="runScan(event)">
+    <!-- Hero -->
+    <main class="relative z-10 pt-40 pb-20 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="hero-title mb-8 animate-fade-in-up delay-100">FREE RELEASE INTEGRITY BASELINE</h1>
+            <p class="max-w-2xl mx-auto text-xl font-display text-gray-300 mb-12 animate-fade-in-up delay-200">
+                Run a fast integrity baseline on your staging environment. We will execute a <span
+                    class="text-white">non-destructive analysis</span> of your public authentication and session
+                handling to demonstrate the depth of RIC's coverage.
+            </p>
+
+            <div class="glass-panel p-12 max-w-2xl mx-auto text-left animate-fade-in-up delay-300">
+                <form class="space-y-6">
                     <div>
-                        <label class="block font-tech text-sm text-gray-300 mb-2">TARGET URL (STAGING / PREVIEW)</label>
-                        <input
-                            class="w-full bg-white/5 border border-white/10 p-3 text-white focus:border-white/50 outline-none font-mono text-sm"
-                            placeholder="https://staging.myapp.com" required="" type="url" />
+                        <label class="block font-orbitron text-sm text-gray-400 mb-2">WORK EMAIL</label>
+                        <input type="email" placeholder="security@yourcompany.com"
+                            class="w-full bg-black/40 border border-white/20 p-4 text-white focus:border-white transition-colors outline-none font-mono">
                     </div>
                     <div>
-                        <label class="block font-tech text-sm text-gray-300 mb-2">EMAIL REPORT TO</label>
-                        <input
-                            class="w-full bg-white/5 border border-white/10 p-3 text-white focus:border-white/50 outline-none font-mono text-sm"
-                            placeholder="eng@company.com" required="" type="email" />
+                        <label class="block font-orbitron text-sm text-gray-400 mb-2">STAGING URL (OPTIONAL)</label>
+                        <input type="text" placeholder="https://staging.app.com"
+                            class="w-full bg-black/40 border border-white/20 p-4 text-white focus:border-white transition-colors outline-none font-mono">
+                        <p class="text-xs text-gray-500 mt-2">* Used only for initial connectivity check.</p>
                     </div>
-                    <button
-                        class="w-full py-4 bg-white text-black font-orbitron font-bold tracking-wider hover:bg-gray-200 transition-colors"
-                        type="submit">
-                        START BASELINE
+                    <button type="button"
+                        class="w-full bg-white text-black font-bold font-orbitron py-4 hover:bg-gray-200 transition-colors tracking-wider">
+                        START BASELINE SCAN
                     </button>
-                    <p class="text-xs text-gray-600 text-center mt-4 font-tech">
-                        By running this, you confirm you are authorized to test this URL.
+                    <p class="text-center text-xs text-gray-500 font-mono">
+                        Zero-Risk: No credentials required for initial handshake.
                     </p>
                 </form>
             </div>
-            <!-- LOADING STATE -->
-            <div class="hidden glass-panel p-12 text-center animate-fade-in-up relative overflow-hidden"
-                id="scan-state">
-                <div
-                    class="absolute inset-0 bg-gradient-to-b from-transparent via-green-500/10 to-transparent h-full w-full animate-scan pointer-events-none">
-                </div>
-                <div class="font-orbitron text-2xl text-white mb-4 animate-pulse">ANALYZING INVARIANTS...</div>
-                <div class="font-mono text-sm text-green-500 space-y-2 text-left bg-black/50 p-4 border border-white/10 h-32 overflow-hidden"
-                    id="terminal-output">
-                    &gt; Initializing runner...<br />
-                    &gt; Navigating to target...<br />
-                    &gt; Capturing session state...<br />
-                    &gt; Verifying role boundaries...<br />
-                </div>
-            </div>
-            <!-- RESULT STATE -->
-            <div class="hidden glass-panel p-12 text-center animate-fade-in-up" id="result-state">
-                <div
-                    class="w-16 h-16 bg-yellow-500/20 text-yellow-400 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold border border-yellow-500">
-                    !
-                </div>
-                <h2 class="font-orbitron text-2xl text-white mb-2">BASELINE COMPLETE</h2>
-                <p class="font-display text-gray-300 mb-6">
-                    Example output: Integrity deviation detected. Full results include evidence artifacts and control
-                    mapping.
-                </p>
-                <div class="bg-white/5 p-4 mb-8 text-left border border-white/10">
-                    <div class="font-mono text-xs text-gray-300 mb-2">EVIDENCE ARTIFACT (EXAMPLE)</div>
-                    <div class="flex items-center gap-2 text-sm text-yellow-300">
-                        <span>📄 evidence_bundle_example.zip</span>
-                    </div>
-                </div>
-                <p class="text-sm text-gray-400 mb-8">A report template is shown here for demonstration. Real runs
-                    attach evidence for each claim.</p>
-                <a class="block w-full py-4 bg-white text-black font-orbitron font-bold tracking-wider hover:bg-gray-200 transition-colors"
-                    href="pricing.html">
-                    ENABLE WEEKLY MONITORING
-                </a>
-                <a class="block w-full py-4 mt-4 border border-white/20 hover:border-white/60 text-white font-orbitron font-bold tracking-wider transition-colors"
-                    href="reports.html">
-                    SEE REPORT FORMAT
-                </a>
-            </div>
         </div>
     </main>
+
+    <!-- Value Prop -->
+    <section class="relative z-10 py-20 bg-black/50 backdrop-blur-sm border-t border-white/10">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="section-title mb-12">WHAT YOU GET</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                <div class="p-6 border border-white/10 bg-white/5">
+                    <div class="font-orbitron text-white mb-2">1. INVARIANT MAP</div>
+                    <p class="text-xs text-gray-400">See which integrity checks apply to your architecture.</p>
+                </div>
+                <div class="p-6 border border-white/10 bg-white/5">
+                    <div class="font-orbitron text-white mb-2">2. SAMPLE EVIDENCE</div>
+                    <p class="text-xs text-gray-400">View a sample Playwright trace and HAR log.</p>
+                </div>
+                <div class="p-6 border border-white/10 bg-white/5">
+                    <div class="font-orbitron text-white mb-2">3. RISK OVERVIEW</div>
+                    <p class="text-xs text-gray-400">High-level assessment of your release risk surface.</p>
+                </div>
+            </div>
+        </div>
+    </section>
     <script>
         function runScan(e) {
             e.preventDefault();
-
-            // Switch to Scan
-            document.getElementById('capture-form').classList.add('hidden');
-            document.getElementById('scan-state').classList.remove('hidden');
-
-            const term = document.getElementById('terminal-output');
-            const logs = [
-                "> Testing Logout Revocation...",
-                "> Replaying token...",
-                "> ASSERTION FAILED: 200 OK received (Expected 401)",
-                "> Generating Evidence bundle..."
-            ];
-
-            let i = 0;
-            const interval = setInterval(() => {
-                if (i < logs.length) {
-                    term.innerHTML += logs[i] + "<br>";
-                    i++;
-                } else {
-                    clearInterval(interval);
-                    setTimeout(() => {
-                        document.getElementById('scan-state').classList.add('hidden');
-                        document.getElementById('result-state').classList.remove('hidden');
-                    }, 1000);
-                }
-            }, 800);
+            // Placeholder for scan logic
+            alert('Baseline scan initiated. Check your email for next steps.');
         }
     </script>
 </body>

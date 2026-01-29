@@ -60,98 +60,92 @@
     <!-- Hero -->
     <main class="relative z-10 pt-40 pb-20 px-6">
         <div class="max-w-7xl mx-auto text-center">
-            <h1 class="hero-title mb-8 animate-fade-in-up delay-100">EVIDENCE-BACKED RELEASE PROOF</h1>
+            <h1 class="hero-title mb-8 animate-fade-in-up delay-100">ENTROPY IS INEVITABLE</h1>
             <p
                 class="max-w-3xl mx-auto text-xl md:text-2xl font-display text-gray-300 mb-12 leading-relaxed animate-fade-in-up delay-200">
-                Auditors don't trust screenshots. RIC provides <span class="text-white">cryptographically verifiable
-                    evidence</span> for every claim.
+                Tests pass, but systems degrade. RIC's Drift Engine compares every release against a <span
+                    class="text-white">cryptographic baseline</span> to surface silent regressions.
             </p>
         </div>
     </main>
 
-    <!-- Report Sections -->
+    <!-- Drift Mechanics -->
     <section class="relative z-10 py-24 bg-black/50 backdrop-blur-sm border-t border-white/10">
-        <div class="max-w-6xl mx-auto px-6 space-y-24">
+        <div class="max-w-7xl mx-auto px-6 space-y-24">
 
-            <!-- Integrity Snapshot -->
+            <!-- Timeline Visualization -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="glass-panel p-8">
-                    <h2 class="font-orbitron text-2xl text-white mb-4">INTEGRITY SNAPSHOT (EXECUTIVE SUMMARY)</h2>
-                    <p class="text-gray-300 font-display leading-relaxed">
-                        A one-page view of system integrity:
+                    <h2 class="font-orbitron text-2xl text-white mb-4">VISUALIZING DECAY</h2>
+                    <p class="text-gray-300 font-display leading-relaxed mb-6">
+                        Most bugs are actually regressions. The Drift Engine maps your integrity score over time,
+                        correlating drops with specific deployment events.
                     </p>
-                    <ul class="mt-4 space-y-2 font-mono text-sm text-gray-400">
-                        <li>> Pass / Fail / Unknown per invariant</li>
-                        <li>> Top critical gaps</li>
-                        <li>> Drift since last release</li>
-                        <li>> Fix priority (High/Medium/Low)</li>
+                    <ul class="space-y-4 font-mono text-sm text-gray-400">
+                        <li class="flex items-center gap-3"><span class="text-green-500">></span> Release v1.2:
+                            Integrity 100%</li>
+                        <li class="flex items-center gap-3"><span class="text-green-500">></span> Release v1.3:
+                            Integrity 100%</li>
+                        <li class="flex items-center gap-3"><span class="text-red-500">></span> Release v1.4: Integrity
+                            85% (AUTH_FAIL)</li>
                     </ul>
                 </div>
                 <div class="border border-white/10 bg-white/5 p-4 rounded-lg">
-                    <!-- Placeholder visual for report -->
-                    <div class="font-mono text-xs text-green-400 mb-2">STATUS: PASS</div>
-                    <div class="h-2 bg-green-500/20 w-3/4 rounded mb-2"></div>
-                    <div class="h-2 bg-green-500/20 w-1/2 rounded mb-4"></div>
-                    <div class="font-mono text-xs text-gray-500">// AUDIT_HASH: sha256:e3b...</div>
+                    <!-- Ascii Chart Placeholder -->
+                    <div class="font-mono text-xs text-gray-500 mb-2">// INTEGRITY_SCORE_HISTORY</div>
+                    <div class="flex items-end gap-2 h-32 border-b border-gray-700 pb-2">
+                        <div class="w-8 bg-green-500 h-full"></div>
+                        <div class="w-8 bg-green-500 h-full"></div>
+                        <div class="w-8 bg-green-500 h-full"></div>
+                        <div class="w-8 bg-green-500 h-full"></div>
+                        <div class="w-8 bg-red-500 h-3/4 animate-pulse"></div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Evidence Bundle -->
+            <!-- Root Cause -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center md:flex-row-reverse">
                 <div class="border border-white/10 bg-white/5 p-4 rounded-lg order-2 md:order-1">
-                    <div class="font-mono text-xs text-blue-400 mb-2">ATTACHMENT: TRACE.ZIP</div>
-                    <div class="space-y-2">
-                        <div class="flex items-center gap-2 text-xs text-gray-400">
-                            <span class="w-2 h-2 bg-blue-500 rounded-full"></span> playwright_trace.json
-                        </div>
-                        <div class="flex items-center gap-2 text-xs text-gray-400">
-                            <span class="w-2 h-2 bg-blue-500 rounded-full"></span> network_har_log.json
-                        </div>
+                    <div class="font-mono text-xs text-blue-400 mb-2">DIFF: TRACE_COMPARISON</div>
+                    <div class="space-y-1 font-mono text-xs">
+                        <div class="text-gray-500">@@ -45,7 +45,7 @@</div>
+                        <div class="text-gray-400"> click('button#upgrade')</div>
+                        <div class="text-gray-400"> expect_response(200)</div>
+                        <div class="text-red-500">- received_status: 200</div>
+                        <div class="text-green-500">+ received_status: 403 (Forbidden)</div>
                     </div>
                 </div>
                 <div class="glass-panel p-8 order-1 md:order-2">
-                    <h2 class="font-orbitron text-2xl text-white mb-4">EVIDENCE BUNDLE</h2>
-                    <p class="text-gray-300 font-display leading-relaxed">
-                        Every finding includes:
+                    <h2 class="font-orbitron text-2xl text-white mb-4">ROOT CAUSE DIFFING</h2>
+                    <p class="text-gray-300 font-display leading-relaxed mb-6">
+                        Don't just see "Fail". See exactly what changed in the execution path.
                     </p>
-                    <ul class="mt-4 space-y-2 font-mono text-sm text-gray-400">
-                        <li>> Playwright trace (video/steps)</li>
-                        <li>> HAR network log (headers/payloads)</li>
-                        <li>> Assertion transcript</li>
-                        <li>> Remediation guidance</li>
+                    <ul class="space-y-4 font-mono text-sm text-gray-400">
+                        <li>> Assertion State Diff</li>
+                        <li>> Network Payload Diff</li>
+                        <li>> DOM Tree Diff</li>
                     </ul>
                 </div>
             </div>
 
-            <!-- Control Mapping -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div class="glass-panel p-8">
-                    <h2 class="font-orbitron text-2xl text-white mb-4">AUDIT-READY CONTROL MAPPING</h2>
-                    <p class="text-gray-300 font-display leading-relaxed">
-                        Findings are mapped directly to:
-                    </p>
-                    <ul class="mt-4 space-y-2 font-mono text-sm text-gray-400">
-                        <li>> OWASP ASVS (V2, V3, V4)</li>
-                        <li>> NIST 800-53 (AC-2, AC-3, SC-7)</li>
-                    </ul>
-                </div>
-                <div class="border border-white/10 bg-white/5 p-4 rounded-lg">
-                    <div class="font-mono text-xs text-yellow-400 mb-2">COMPLIANCE MAP</div>
-                    <div class="text-xs font-mono text-gray-400">
-                        FINDING_ID: AUTH-01 -> <span class="text-white">NIST AC-2(2)</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Drift Timeline -->
-            <div class="glass-panel p-8 text-center">
-                <h2 class="font-orbitron text-2xl text-white mb-4">DRIFT REGRESSION TIMELINE</h2>
-                <p class="text-gray-300 font-display leading-relaxed max-w-2xl mx-auto mb-6">
-                    RIC tracks integrity over time: when failures are introduced, when gaps are fixed, and which risks
-                    persist.
+            <!-- Integration -->
+            <div class="glass-panel p-10 text-center">
+                <h2 class="font-orbitron text-2xl text-white mb-4">BLOCK BAD BUILDS</h2>
+                <p class="text-gray-300 font-display leading-relaxed max-w-2xl mx-auto mb-8">
+                    Connect RIC to your CI/CD. Failing the integrity baseline should fail the build, preventing the
+                    regression from ever reaching production.
                 </p>
-                <div class="inline-block px-4 py-2 bg-white/10 border border-white/20 font-mono text-sm text-white">
-                    CONTINUOUS INTEGRITY ASSURANCE — NOT A ONE-TIME PDF
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="p-4 border border-white/10 text-gray-400 text-sm">GitHub Actions</div>
+                    <div class="p-4 border border-white/10 text-gray-400 text-sm">GitLab CI</div>
+                    <div class="p-4 border border-white/10 text-gray-400 text-sm">Linear Webhooks</div>
+                    <div class="p-4 border border-white/10 text-gray-400 text-sm">Slack Alerts</div>
+                </div>
+                <div class="mt-8">
+                    <a class="inline-block px-12 py-5 bg-white text-black font-bold font-orbitron tracking-wider hover:bg-gray-200 transition-colors"
+                        href="pricing.html">
+                        DEPLOY DRIFT DEFENSE
+                    </a>
                 </div>
             </div>
 

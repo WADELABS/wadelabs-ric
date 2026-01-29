@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Wadelabs RIC | How It Works</title>
+    <link href="assets/favicon.png" rel="icon" type="image/png" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Orbitron:wght@400;500;700;900&amp;family=Rajdhani:wght@300;500;700&amp;family=Space+Grotesk:wght@300;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Space Grotesk', 'sans-serif'], tech: ['Rajdhani', 'sans-serif'], orbitron: ['Orbitron', 'sans-serif'] }, colors: { background: '#000000', foreground: '#fafafa' }, animation: { 'fade-in-up': 'fade-in-up 0.8s ease-out forwards' }, keyframes: { 'fade-in-up': { 'from': { opacity: '0', transform: 'translateY(20px)' }, 'to': { opacity: '1', transform: 'translateY(0)' } } } } } }
+    </script>
+    <style>
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: clamp(3rem, 6vw, 6rem);
+            line-height: 1;
+            color: white;
+            margin-bottom: 2rem;
+            letter-spacing: 0.1em;
+        }
+
+        .glass-panel {
+            background: rgba(5, 5, 5, 0.9);
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+    </style>
+</head>
+
+<body class="bg-black min-h-screen">
+    <!-- Nav -->
+    <nav class="fixed top-0 w-full z-50 glass-panel border-b-0 border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a class="font-orbitron font-bold text-2xl tracking-widest text-white hover:text-gray-300 transition-colors"
+                href="index.html">WADELABS</a>
+            <div class="hidden md:flex space-x-6 font-tech tracking-wide text-sm text-gray-400">
+                <a class="text-white" href="how-it-works.html">HOW IT WORKS</a>
+                <a class="hover:text-white transition-colors" href="what-we-find.html">WHAT WE FIND</a>
+                <a class="hover:text-white transition-colors" href="reports.html">REPORTS</a>
+                <a class="hover:text-white transition-colors" href="pricing.html">PRICING</a>
+                <a class="hover:text-white transition-colors" href="trust.html">TRUST</a>
+            </div>
+            <a class="px-6 py-2 bg-white text-black font-bold font-tech text-sm tracking-wider hover:bg-gray-200 transition-colors"
+                href="snapshot.html">
+                RUN SCAN
+            </a>
+        </div>
+    </nav>
+    <div class="fixed inset-0 z-0 opacity-20 pointer-events-none">
+        <video autoplay="" class="w-full h-full object-cover" loop="" muted="" playsinline="">
+            <source src="assets/hero-video.mp4" type="video/mp4" />
+        </video>
+    </div>
+    <!-- Hero -->
+    <main class="relative z-10 pt-40 pb-20 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="hero-title mb-8 animate-fade-in-up delay-100">THE INVARIANT CATALOG</h1>
+            <p
+                class="max-w-3xl mx-auto text-xl md:text-2xl font-display text-gray-300 mb-12 leading-relaxed animate-fade-in-up delay-200">
+                A living library of integrity assertions. RIC validates these <span class="text-white">immutable
+                    laws</span> against your shifting codebase.
+            </p>
+        </div>
+    </main>
+
+    <!-- Invariants Grid -->
+    <section class="relative z-10 py-24 bg-black/50 backdrop-blur-sm border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="space-y-24">
+
+                <!-- Use Case 1: Auth -->
+                <div>
+                    <h2 class="font-orbitron text-2xl text-white mb-8 border-b border-white/10 pb-4">01. AUTHENTICATION
+                        SURVIVABILITY</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="glass-panel p-8">
+                            <h3 class="font-mono text-lg text-blue-400 mb-2">AUTH_REVOCATION_IMMEDIATE</h3>
+                            <p class="text-gray-400 text-sm mb-4">Asserts that a session token is rejected immediately
+                                after a logout or password reset event.</p>
+                            <div class="font-mono text-xs text-gray-500 bg-black/50 p-3 rounded border border-white/5">
+                                expect(response).toBe(401);
+                            </div>
+                        </div>
+                        <div class="glass-panel p-8">
+                            <h3 class="font-mono text-lg text-blue-400 mb-2">MFA_ENFORCEMENT_STRICT</h3>
+                            <p class="text-gray-400 text-sm mb-4">Asserts that sensitive actions (email change, API key
+                                create) require a fresh sudo-mode challenge.</p>
+                            <div class="font-mono text-xs text-gray-500 bg-black/50 p-3 rounded border border-white/5">
+                                expect(challenge_presented).toBeTrue();
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Use Case 2: Billing -->
+                <div>
+                    <h2 class="font-orbitron text-2xl text-white mb-8 border-b border-white/10 pb-4">02. BILLING &
+                        ENTITLEMENTS</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="glass-panel p-8">
+                            <h3 class="font-mono text-lg text-green-400 mb-2">SUB_DOWNGRADE_ACCESS</h3>
+                            <p class="text-gray-400 text-sm mb-4">Asserts that premium features are inaccessible
+                                immediately after a plan downgrade is confirmed.</p>
+                            <div class="font-mono text-xs text-gray-500 bg-black/50 p-3 rounded border border-white/5">
+                                expect(feature_access).toBe(false);
+                            </div>
+                        </div>
+                        <div class="glass-panel p-8">
+                            <h3 class="font-mono text-lg text-green-400 mb-2">PAYMENT_IDEMPOTENCY</h3>
+                            <p class="text-gray-400 text-sm mb-4">Asserts that a rapid-fire double submit of the
+                                checkout form results in only one charge.</p>
+                            <div class="font-mono text-xs text-gray-500 bg-black/50 p-3 rounded border border-white/5">
+                                expect(charge_count).toBe(1);
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Use Case 3: Boundaries -->
+                <div>
+                    <h2 class="font-orbitron text-2xl text-white mb-8 border-b border-white/10 pb-4">03. TENANT & ROLE
+                        BOUNDARIES</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="glass-panel p-8">
+                            <h3 class="font-mono text-lg text-red-400 mb-2">TENANT_ISOLATION_OBJECT</h3>
+                            <p class="text-gray-400 text-sm mb-4">Asserts that requesting an object ID belonging to
+                                Tenant A returns 403/404 when requested by Tenant B.</p>
+                            <div class="font-mono text-xs text-gray-500 bg-black/50 p-3 rounded border border-white/5">
+                                expect(access_check).toBe(403);
+                            </div>
+                        </div>
+                        <div class="glass-panel p-8">
+                            <h3 class="font-mono text-lg text-red-400 mb-2">ADMIN_ROUTE_LEAK</h3>
+                            <p class="text-gray-400 text-sm mb-4">Asserts that admin-only routes are unreachable by
+                                standard users, even via direct URL navigation.</p>
+                            <div class="font-mono text-xs text-gray-500 bg-black/50 p-3 rounded border border-white/5">
+                                expect(nav_result).toBe('Redirected');
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="relative z-10 py-24 text-center">
+        <h2 class="font-orbitron text-2xl text-white mb-8">MISSING AN INVARIANT?</h2>
+        <p class="text-gray-400 mb-8">We build custom invariant suites for Enterprise partners.</p>
+        <a class="inline-block px-12 py-5 bg-white text-black font-bold font-orbitron tracking-wider hover:bg-gray-200 transition-colors"
+            href="pricing.html">
+            VIEW ENTERPRISE PLANS
+        </a>
+    </section>
+    <footer class="relative z-10 py-24 text-center border-t border-white/10">
+        <h2 class="font-orbitron text-4xl mb-8 text-white drop-shadow-lg">STOP SHIPPING BLIND.</h2>
+        <a class="inline-block px-12 py-5 bg-white text-black font-bold font-orbitron tracking-wider hover:bg-gray-200 transition-colors"
+            href="snapshot.html">
+            RUN INTEGRITY SNAPSHOT
+        </a>
+        <div class="mt-12 text-gray-600 font-tech text-sm">
+            © 2026 WADELABS INTEGRITY ENGINEERING
+        </div>
+    </footer>
+</body>
+
+</html>

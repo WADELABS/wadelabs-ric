@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Wadelabs RIC | Reports</title>
+    <link href="assets/favicon.png" rel="icon" type="image/png" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Orbitron:wght@400;500;700;900&amp;family=Rajdhani:wght@300;500;700&amp;family=Space+Grotesk:wght@300;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Space Grotesk', 'sans-serif'], tech: ['Rajdhani', 'sans-serif'], orbitron: ['Orbitron', 'sans-serif'] }, colors: { background: '#000000', foreground: '#fafafa' }, animation: { 'fade-in-up': 'fade-in-up 0.8s ease-out forwards' }, keyframes: { 'fade-in-up': { 'from': { opacity: '0', transform: 'translateY(20px)' }, 'to': { opacity: '1', transform: 'translateY(0)' } } } } } }
+    </script>
+    <style>
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: clamp(3rem, 6vw, 6rem);
+            line-height: 1;
+            color: white;
+            margin-bottom: 2rem;
+            letter-spacing: 0.1em;
+        }
+
+        .glass-panel {
+            background: rgba(5, 5, 5, 0.9);
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+    </style>
+</head>
+
+<body class="bg-black min-h-screen">
+    <nav class="fixed top-0 w-full z-50 glass-panel border-b-0 border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a class="font-orbitron font-bold text-2xl tracking-widest text-white hover:text-gray-300 transition-colors"
+                href="index.html">WADELABS</a>
+            <div class="hidden md:flex space-x-6 font-tech tracking-wide text-sm text-gray-400">
+                <a class="hover:text-white transition-colors" href="how-it-works.html">HOW IT WORKS</a>
+                <a class="hover:text-white transition-colors" href="what-we-find.html">WHAT WE FIND</a>
+                <a class="text-white" href="reports.html">REPORTS</a>
+                <a class="hover:text-white transition-colors" href="pricing.html">PRICING</a>
+                <a class="hover:text-white transition-colors" href="trust.html">TRUST</a>
+            </div>
+            <a class="px-6 py-2 bg-white text-black font-bold font-tech text-sm tracking-wider hover:bg-gray-200 transition-colors"
+                href="snapshot.html">
+                RUN SCAN
+            </a>
+        </div>
+    </nav>
+    <div class="fixed inset-0 z-0 opacity-20 pointer-events-none">
+        <video autoplay="" class="w-full h-full object-cover" loop="" muted="" playsinline="">
+            <source src="assets/hero-video.mp4" type="video/mp4" />
+        </video>
+    </div>
+    <!-- Hero -->
+    <main class="relative z-10 pt-40 pb-20 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="hero-title mb-8 animate-fade-in-up delay-100">SANITIZED CASE FILES</h1>
+            <p
+                class="max-w-3xl mx-auto text-xl md:text-2xl font-display text-gray-300 mb-12 leading-relaxed animate-fade-in-up delay-200">
+                Real integrity failures detected in production environments. Names redacted. <span
+                    class="text-white">Impact confirmation included.</span>
+            </p>
+        </div>
+    </main>
+
+    <!-- Case Files -->
+    <section class="relative z-10 py-24 bg-black/50 backdrop-blur-sm border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 space-y-24">
+
+            <!-- Case 1 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
+                <div class="glass-panel p-8 md:col-span-2 border-l-4 border-red-500">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="bg-red-500/10 text-red-500 font-mono text-xs px-2 py-1 border border-red-500/20">
+                            CASE #892</div>
+                        <h2 class="font-orbitron text-2xl text-white">THE "SOFT DELETE" LEAK</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="font-bold text-white mb-2">THE REGRESSION</h3>
+                            <p class="text-gray-400 font-display text-sm leading-relaxed mb-4">
+                                A backend refactor introduced a "soft delete" flag (`deleted_at`) for user objects.
+                                However, the `GET /api/v1/users/{id}` endpoint failed to filter by this flag if the
+                                requester had the same role as the target.
+                            </p>
+                            <h3 class="font-bold text-white mb-2">THE IMPACT</h3>
+                            <p class="text-gray-400 font-display text-sm leading-relaxed">
+                                Former employees with "soft deleted" accounts could still be queried by active
+                                employees, leasing PII (Personally Identifiable Information) and internal metadata.
+                            </p>
+                        </div>
+                        <div class="bg-black/50 p-4 border border-white/10 font-mono text-xs text-gray-400">
+                            <div class="text-gray-500 mb-2">// INVARIANT FAILED: TENANT_ISOLATION</div>
+                            <div class="mb-1">request: GET /users/user_deleted_01</div>
+                            <div class="mb-1">auth_header: Bearer active_user_token</div>
+                            <div class="text-red-500 mb-1">
+                                < actual: 200 OK (JSON Payload)</div>
+                                    <div class="text-green-500">
+                                        < expected: 404 NOT FOUND</div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case 2 -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
+                        <div class="glass-panel p-8 md:col-span-2 border-l-4 border-yellow-500">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div
+                                    class="bg-yellow-500/10 text-yellow-500 font-mono text-xs px-2 py-1 border border-yellow-500/20">
+                                    CASE #114</div>
+                                <h2 class="font-orbitron text-2xl text-white">THE "SHADOW ADMIN" PROMOTION</h2>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div>
+                                    <h3 class="font-bold text-white mb-2">THE REGRESSION</h3>
+                                    <p class="text-gray-400 font-display text-sm leading-relaxed mb-4">
+                                        A frontend update allowed the "Role" dropdown to be visible in the "Edit
+                                        Profile" modal for all users, but relied on the backend to ignore the field if
+                                        sent by non-admins. The backend validation was missing for the `PATCH` method.
+                                    </p>
+                                    <h3 class="font-bold text-white mb-2">THE IMPACT</h3>
+                                    <p class="text-gray-400 font-display text-sm leading-relaxed">
+                                        Any authenticated user could escalate themselves to "Organization Admin" by
+                                        intercepting the request and adding `"role": "admin"`.
+                                    </p>
+                                </div>
+                                <div class="bg-black/50 p-4 border border-white/10 font-mono text-xs text-gray-400">
+                                    <div class="text-gray-500 mb-2">// INVARIANT FAILED: IMMUTABLE_ROLE</div>
+                                    <div class="mb-1">request: PATCH /me { "role": "admin" }</div>
+                                    <div class="text-red-500 mb-1">
+                                        < actual: 200 OK</div>
+                                            <div class="text-green-500">
+                                                < expected: 403 FORBIDDEN (Field Ignored)</div>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Case 3 -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
+                                <div class="glass-panel p-8 md:col-span-2 border-l-4 border-green-500">
+                                    <div class="flex items-center gap-4 mb-6">
+                                        <div
+                                            class="bg-green-500/10 text-green-500 font-mono text-xs px-2 py-1 border border-green-500/20">
+                                            CASE #773</div>
+                                        <h2 class="font-orbitron text-2xl text-white">THE "FREE TIER" LOOPHOLE</h2>
+                                    </div>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                        <div>
+                                            <h3 class="font-bold text-white mb-2">THE REGRESSION</h3>
+                                            <p class="text-gray-400 font-display text-sm leading-relaxed mb-4">
+                                                During a migration to Stripe Elements, the "Plan ID" validation logic
+                                                was moved to a webhook. The client-side success handler fired *before*
+                                                the webhook validation completed, granting immediate access to premium
+                                                features.
+                                            </p>
+                                            <h3 class="font-bold text-white mb-2">THE IMPACT</h3>
+                                            <p class="text-gray-400 font-display text-sm leading-relaxed">
+                                                Users could initiate a checkout with an invalid card, trigger the client
+                                                success state, and access premium reports for ~30 seconds before the
+                                                webhook revoked access. A script could harvest data indefinitely.
+                                            </p>
+                                        </div>
+                                        <div
+                                            class="bg-black/50 p-4 border border-white/10 font-mono text-xs text-gray-400">
+                                            <div class="text-gray-500 mb-2">// INVARIANT FAILED: ENTITLEMENT_ASYNC</div>
+                                            <div class="mb-1">action: Trigger Fake Success</div>
+                                            <div class="text-red-500 mb-1">
+                                                < actual: Feature Access GRANTED</div>
+                                                    <div class="text-green-500">
+                                                        < expected: Feature Access PENDING</div>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mt-12 text-center">
+                                        <a class="inline-block px-12 py-5 bg-white text-black font-bold font-orbitron tracking-wider hover:bg-gray-200 transition-colors"
+                                            href="snapshot.html">
+                                            PREVENT CASE #4
+                                        </a>
+                                    </div>
+
+                                </div>
+    </section>
+    <footer class="relative z-10 py-24 text-center border-t border-white/10">
+        <h2 class="font-orbitron text-4xl mb-8 text-white drop-shadow-lg">STOP SHIPPING BLIND.</h2>
+        <a class="inline-block px-12 py-5 bg-white text-black font-bold font-orbitron tracking-wider hover:bg-gray-200 transition-colors"
+            href="snapshot.html">
+            RUN INTEGRITY SNAPSHOT
+        </a>
+        <div class="mt-12 text-gray-600 font-tech text-sm">
+            © 2026 WADELABS INTEGRITY ENGINEERING
+        </div>
+    </footer>
+</body>
+
+</html>

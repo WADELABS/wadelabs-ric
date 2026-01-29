@@ -14,6 +14,8 @@
     <script>
         tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Space Grotesk', 'sans-serif'], tech: ['Rajdhani', 'sans-serif'], orbitron: ['Orbitron', 'sans-serif'] }, colors: { background: '#000000', foreground: '#fafafa' }, animation: { 'fade-in-up': 'fade-in-up 0.8s ease-out forwards' }, keyframes: { 'fade-in-up': { 'from': { opacity: '0', transform: 'translateY(20px)' }, 'to': { opacity: '1', transform: 'translateY(0)' } } } } } }
     </script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="js/config.js"></script>
     <script src="js/stripe.js"></script>
     <style>
         .hero-title {
@@ -62,79 +64,121 @@
             <source src="assets/hero-video.mp4" type="video/mp4" />
         </video>
     </div>
+    <!-- Hero -->
     <main class="relative z-10 pt-40 pb-20 px-6">
-        <div class="max-w-5xl mx-auto">
-            <h1 class="hero-title animate-fade-in-up">PRICING</h1>
-            <p class="max-w-3xl font-display text-gray-300 mt-6 mb-12 leading-relaxed">
-                RIC is built to run with minimal overhead: scheduled scans, evidence-backed reporting, and drift
-                detection.
-                Choose a tier based on how often you ship and how much pressure testing you want.
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="hero-title mb-8 animate-fade-in-up delay-100">INTEGRITY IS PRICELESS.<br>DRIFT IS EXPENSIVE.</h1>
+            <p
+                class="max-w-3xl mx-auto text-xl md:text-2xl font-display text-gray-300 mb-12 leading-relaxed animate-fade-in-up delay-200">
+                A single integrity drift failure costs more in reputation and remediation than a year of RIC.
             </p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                <div class="glass-panel p-8 border border-white/10">
-                    <div class="font-orbitron text-white text-xl mb-2">BASELINE MONITORING</div>
-                    <div class="text-gray-400 text-sm mb-6">Weekly integrity snapshots + evidence bundle.</div>
-                    <div class="text-3xl font-orbitron text-white mb-6">$499<span
-                            class="text-sm text-gray-300">/mo</span></div>
-                    <ul class="text-sm font-mono text-gray-300 space-y-2">
-                        <li>&gt; Integrity Snapshot (Pass/Fail/Unknown)</li>
-                        <li>&gt; Evidence artifacts for findings</li>
-                        <li>&gt; Control mapping (OWASP/NIST)</li>
-                        <li>&gt; Email delivery</li>
+        </div>
+    </main>
+
+    <!-- Pricing Grid -->
+    <section class="relative z-10 py-24 bg-black/50 backdrop-blur-sm border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <!-- Starter -->
+                <div
+                    class="glass-panel p-8 border-t-2 border-gray-600 relative overflow-hidden group hover:border-white transition-colors">
+                    <h3 class="font-orbitron text-2xl text-white mb-2">STARTER</h3>
+                    <div class="text-4xl font-mono text-white mb-6">$2,000<span class="text-lg text-gray-500">/mo</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-8 font-display">For startups ensuring major releases don't break
+                        fundamentals.</p>
+                    <ul class="space-y-4 mb-8 text-sm font-mono text-gray-300">
+                        <li class="flex items-center gap-3"><span class="text-green-500">✓</span> Weekly Integrity Scan
+                        </li>
+                        <li class="flex items-center gap-3"><span class="text-green-500">✓</span> 1 Staging Environment
+                        </li>
+                        <li class="flex items-center gap-3"><span class="text-green-500">✓</span> Core Invariants (Auth,
+                            Session)</li>
+                        <li class="flex items-center gap-3"><span class="text-green-500">✓</span> Email Support</li>
                     </ul>
-                    <a class="mt-8 block text-center px-6 py-3 bg-white text-black font-orbitron font-bold tracking-wider hover:bg-gray-200 transition-colors"
-                        href="snapshot.html">START WITH A SNAPSHOT</a>
+                    <button onclick="startCheckout('price_1Qul7EEcU4RfdUAB5zL7d7qG')"
+                        class="w-full py-4 border border-white/20 text-white font-orbitron font-bold hover:bg-white hover:text-black transition-all transform hover:scale-[1.02]">
+                        START WEEKLY
+                    </button>
                 </div>
-                <div class="glass-panel p-8 border border-white/20">
-                    <div class="font-orbitron text-white text-xl mb-2">RELEASE DRIFT DEFENSE</div>
-                    <div class="text-gray-400 text-sm mb-6">Drift detection + deeper invariant coverage.</div>
-                    <div class="text-3xl font-orbitron text-white mb-6">$1,500<span
-                            class="text-sm text-gray-300">/mo</span></div>
-                    <ul class="text-sm font-mono text-gray-300 space-y-2">
-                        <li>&gt; Everything in Baseline</li>
-                        <li>&gt; Drift regression timeline</li>
-                        <li>&gt; Expanded integrity protocols</li>
-                        <li>&gt; Priority escalation for critical breaks</li>
+
+                <!-- Validation (Pro) -->
+                <div class="glass-panel p-8 border-t-2 border-white relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 bg-white text-black text-xs font-bold px-3 py-1 font-orbitron">
+                        POPULAR</div>
+                    <h3 class="font-orbitron text-2xl text-white mb-2">VALIDATION</h3>
+                    <div class="text-4xl font-mono text-white mb-6">$5,000<span class="text-lg text-gray-500">/mo</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-8 font-display">For teams shipping daily who need automated
+                        regression defense.</p>
+                    <ul class="space-y-4 mb-8 text-sm font-mono text-gray-300">
+                        <li class="flex items-center gap-3"><span class="text-green-500">✓</span> Daily Integrity Scan
+                        </li>
+                        <li class="flex items-center gap-3"><span class="text-green-500">✓</span> 2 Environments
+                            (Staging, Pre-Prod)</li>
+                        <li class="flex items-center gap-3"><span class="text-green-500">✓</span> Full Invariants
+                            (Billing, Export)</li>
+                        <li class="flex items-center gap-3"><span class="text-green-500">✓</span> Slack Alerts &
+                            Webhooks</li>
                     </ul>
-                    <a class="mt-8 block text-center px-6 py-3 bg-white text-black font-orbitron font-bold tracking-wider hover:bg-gray-200 transition-colors"
-                        href="snapshot.html">ENABLE MONITORING</a>
+                    <button onclick="startCheckout('price_1Qul7tEcU4RfdUABWjYjV0n2')"
+                        class="w-full py-4 bg-white text-black font-orbitron font-bold hover:bg-gray-200 transition-all transform hover:scale-[1.02]">
+                        START DAILY
+                    </button>
                 </div>
-                <div class="glass-panel p-8 border border-white/10">
-                    <div class="font-orbitron text-white text-xl mb-2">LAUNCH CERTIFICATION</div>
-                    <div class="text-gray-400 text-sm mb-6">One-time pre-launch integrity audit + retest.</div>
-                    <div class="text-3xl font-orbitron text-white mb-6">$2,500</div>
-                    <ul class="text-sm font-mono text-gray-300 space-y-2">
-                        <li>&gt; Full integrity run (staging)</li>
-                        <li>&gt; Evidence bundle</li>
-                        <li>&gt; Executive-ready snapshot report</li>
-                        <li>&gt; One retest included</li>
+
+                <!-- Assurance (Audit) -->
+                <div
+                    class="glass-panel p-8 border-t-2 border-yellow-500 relative overflow-hidden group hover:border-yellow-400 transition-colors">
+                    <h3 class="font-orbitron text-2xl text-white mb-2">ASSURANCE</h3>
+                    <div class="text-4xl font-mono text-white mb-6">CUSTOM</div>
+                    <p class="text-gray-400 text-sm mb-8 font-display">For regulated enterprises requiring continuous
+                        audit-proof evidence.</p>
+                    <ul class="space-y-4 mb-8 text-sm font-mono text-gray-300">
+                        <li class="flex items-center gap-3"><span class="text-yellow-500">✓</span> Continuous / Per-PR
+                            Scan</li>
+                        <li class="flex items-center gap-3"><span class="text-yellow-500">✓</span> Unlimited
+                            Environments</li>
+                        <li class="flex items-center gap-3"><span class="text-yellow-500">✓</span> Custom Invariant
+                            Development</li>
+                        <li class="flex items-center gap-3"><span class="text-yellow-500">✓</span> Dedicated Integrity
+                            Engineer</li>
                     </ul>
-                    <a class="mt-8 block text-center px-6 py-3 border border-white/20 hover:border-white/60 text-white font-orbitron font-bold tracking-wider transition-colors"
-                        href="trust.html">READ SCOPE</a>
+                    <button onclick="window.location.href='mailto:sales@wadelabs.io'"
+                        class="w-full py-4 border border-white/20 text-white font-orbitron font-bold hover:bg-yellow-500 hover:border-yellow-500 hover:text-black transition-all transform hover:scale-[1.02]">
+                        CONTACT SALES
+                    </button>
                 </div>
+
             </div>
-            <div class="glass-panel p-10">
-                <h2 class="font-orbitron text-xl text-white mb-4">FAQ</h2>
-                <div class="space-y-6 text-gray-300 font-display">
-                    <div>
-                        <div class="font-orbitron text-white mb-2">Do you need meetings?</div>
-                        <p class="text-gray-400 text-sm">No. RIC is designed for automated delivery. Escalation happens
-                            only for critical integrity breaks.</p>
-                    </div>
-                    <div>
-                        <div class="font-orbitron text-white mb-2">Is this a pentest?</div>
-                        <p class="text-gray-400 text-sm">No. RIC verifies release-time integrity guarantees with
-                            evidence and drift detection. It complements pentesting.</p>
-                    </div>
-                    <div>
-                        <div class="font-orbitron text-white mb-2">Do you run on production?</div>
-                        <p class="text-gray-400 text-sm">By default, no — staging/preview only, with explicit
-                            authorization and scope.</p>
-                    </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="relative z-10 py-24">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="section-title mb-12 text-center">COMMON QUESTIONS</h2>
+            <div class="space-y-6">
+                <div class="glass-panel p-6">
+                    <h3 class="font-orbitron text-white text-lg mb-2">DO YOU NEED SOURCE CODE ACCESS?</h3>
+                    <p class="text-gray-400 font-display text-sm">No. RIC operates entirely from the outside, just like
+                        a user or attacker. We only need staging credentials.</p>
+                </div>
+                <div class="glass-panel p-6">
+                    <h3 class="font-orbitron text-white text-lg mb-2">HOW IS THIS DIFFERENT FROM QA?</h3>
+                    <p class="text-gray-400 font-display text-sm">QA tests features ("Does the button work?"). RIC tests
+                        guarantees ("Does the button bypass auth?"). We assume the feature works and test if it breaks
+                        integrity.</p>
+                </div>
+                <div class="glass-panel p-6">
+                    <h3 class="font-orbitron text-white text-lg mb-2">CAN I CANCEL ANYTIME?</h3>
+                    <p class="text-gray-400 font-display text-sm">Yes. Contracts are monthly. Integrity is continuous,
+                        but our agreement doesn't have to be locked in.</p>
                 </div>
             </div>
         </div>
-    </main>
+    </section>
     <footer class="relative z-10 py-24 text-center border-t border-white/10">
         <h2 class="font-orbitron text-4xl mb-8 text-white drop-shadow-lg">STOP SHIPPING BLIND.</h2>
         <a class="inline-block px-12 py-5 bg-white text-black font-bold font-orbitron tracking-wider hover:bg-gray-200 transition-colors"

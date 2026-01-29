@@ -135,19 +135,21 @@
     <!-- Hero -->
     <main class="relative z-10 pt-40 pb-20 px-6">
         <div class="max-w-7xl mx-auto text-center">
-            <h1 class="hero-title mb-8 animate-fade-in-up delay-100">INTEGRITY</h1>
-            <p class="font-tech text-xl tracking-[0.2em] text-white/80 mb-6 animate-fade-in-up delay-100">
-                RELEASE INTEGRITY MONITORING FOR SAAS TEAMS
-            </p>
+            <h1 class="hero-title mb-8 animate-fade-in-up delay-100">RELEASE INTEGRITY MONITORING FOR SAAS TEAMS</h1>
             <p
-                class="max-w-3xl mx-auto text-xl md:text-2xl font-display text-gray-300 mb-12 leading-relaxed animate-fade-in-up delay-200">
-                Wadelabs RIC verifies the <span class="text-white">invariants your SaaS must never break</span> —
+                class="max-w-3xl mx-auto text-xl md:text-2xl font-display text-gray-300 mb-8 leading-relaxed animate-fade-in-up delay-200">
+                Wadelabs RIC verifies the <span class="text-white">integrity guarantees</span> your SaaS must never
+                break —
                 and detects <span class="text-white">drift every release</span> with evidence.
+            </p>
+            <p class="font-tech text-md tracking-wider text-white/60 mb-12 animate-fade-in-up delay-200">
+                Catch silent failures in session handling, authorization, billing, and data workflows before they reach
+                production.
             </p>
             <div class="flex flex-col md:flex-row justify-center items-center gap-6 animate-fade-in-up delay-300">
                 <a class="group relative px-8 py-4 bg-white text-black font-orbitron font-bold tracking-wider overflow-hidden"
                     href="snapshot.html">
-                    <span class="relative z-10">RUN FREE SNAPSHOT</span>
+                    <span class="relative z-10">RUN FREE INTEGRITY BASELINE</span>
                     <div
                         class="absolute inset-0 bg-black/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                     </div>
@@ -157,103 +159,134 @@
                     ENABLE WEEKLY MONITORING
                 </a>
             </div>
-            <p class="mt-10 text-sm text-gray-300 font-tech">
-                Evidence-only. Authorization-only. Audit-ready.
+            <p class="mt-10 text-sm text-gray-400 font-tech">
+                No credit card required · Authorized staging only
             </p>
         </div>
     </main>
+
     <!-- Problem Statement -->
     <section class="relative z-10 py-24 bg-black/50 backdrop-blur-sm border-t border-white/10">
         <div class="max-w-6xl mx-auto px-6">
-            <h2 class="section-title mb-10">THE PROBLEM</h2>
+            <h2 class="section-title mb-10">MOST SECURITY FAILURES AREN’T VULNERABILITIES</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="glass-panel p-8">
                     <p class="text-gray-300 font-display leading-relaxed">
-                        Most teams ship fast. Integrity breaks quietly.
-                        The costliest failures aren’t “hacks” — they’re <span class="text-white">state and workflow
-                            gaps</span>
-                        that appear under real user pressure.
+                        Teams ship fast. Systems drift quietly.
+                        The most expensive failures aren’t exploits — they’re <span class="text-white">integrity
+                            breaks</span>:
                     </p>
                     <ul class="mt-6 space-y-2 text-sm font-mono text-gray-300">
-                        <li>&gt; Logout that doesn’t revoke server-side authorization</li>
-                        <li>&gt; Role boundaries that drift after a refactor</li>
-                        <li>&gt; Multi-tab / retry storms that double-apply critical actions</li>
-                        <li>&gt; Exports/downloads that bleed across tenants</li>
-                        <li>&gt; Sensitive changes without step-up verification</li>
+                        <li>> Sessions that remain active after logout</li>
+                        <li>> Role boundaries that erode over time</li>
+                        <li>> Billing actions that double-apply under retries</li>
+                        <li>> Exports that leak across tenants</li>
+                        <li>> Sensitive changes without re-authentication</li>
                     </ul>
                 </div>
                 <div class="glass-panel p-8">
                     <p class="text-gray-300 font-display leading-relaxed">
-                        Scanners and quarterly pentests rarely catch these because the code can be “secure” while the
-                        <span class="text-white">system behavior</span> becomes exploitable.
-                    </p>
-                    <p class="mt-6 text-gray-400 text-sm">
-                        RIC is built for the gap between a secure design and a circumstance-driven user.
+                        These issues rarely appear in code review or scanners.
+                        They appear <span class="text-white">after releases — in real usage</span>.
                     </p>
                 </div>
             </div>
         </div>
     </section>
+
     <!-- What RIC Is -->
     <section class="relative z-10 py-24">
         <div class="max-w-6xl mx-auto px-6">
-            <h2 class="section-title mb-10">WHAT RIC IS</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="glass-panel p-8">
-                    <h3 class="font-orbitron text-lg mb-3 text-white">INVARIANT CHECKS</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        RIC runs protocol-style workflows across auth, billing, exports, and role boundaries.
-                        These are integrity guarantees — not generic vulnerability scans.
-                    </p>
+            <h2 class="section-title mb-10">WHAT IS RELEASE INTEGRITY MONITORING?</h2>
+            <div class="glass-panel p-10 text-center">
+                <p class="text-xl text-gray-300 font-display leading-relaxed max-w-4xl mx-auto">
+                    Wadelabs RIC is an <span class="text-white">evidence-based integrity regression system</span>.
+                    It continuously verifies that critical system invariants remain true as your code evolves — and
+                    detects drift when releases introduce new risk.
+                </p>
+                <p class="mt-6 text-white font-orbitron tracking-wider">
+                    THIS IS NOT QUARTERLY PENTESTING. THIS IS RELEASE-TIME ASSURANCE.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Outcomes Section -->
+    <section class="relative z-10 py-24 bg-white/5">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="section-title mb-10">WHAT YOU GET EVERY RUN</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass-panel p-6">
+                    <div class="font-orbitron text-white text-lg mb-2">SNAPSHOT</div>
+                    <p class="text-sm text-gray-400">Integrity Snapshot (executive summary)</p>
                 </div>
-                <div class="glass-panel p-8">
-                    <h3 class="font-orbitron text-lg mb-3 text-white">EVIDENCE BUNDLE</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Every finding is backed by reproducible artifacts: traces, network logs, and assertion output.
-                        No evidence = Unknown.
-                    </p>
+                <div class="glass-panel p-6">
+                    <div class="font-orbitron text-white text-lg mb-2">EVIDENCE</div>
+                    <p class="text-sm text-gray-400">Evidence bundle (trace, network, assertions)</p>
                 </div>
-                <div class="glass-panel p-8">
-                    <h3 class="font-orbitron text-lg mb-3 text-white">CONTROL MAPPING</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Findings map to OWASP ASVS and NIST 800-53 to support audits, incident review, and executive
-                        reporting.
-                    </p>
+                <div class="glass-panel p-6">
+                    <div class="font-orbitron text-white text-lg mb-2">DRIFT</div>
+                    <p class="text-sm text-gray-400">Regression drift detection (what changed)</p>
+                </div>
+                <div class="glass-panel p-6">
+                    <div class="font-orbitron text-white text-lg mb-2">MAPPING</div>
+                    <p class="text-sm text-gray-400">Fix priority mapped to OWASP ASVS/NIST</p>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Differentiation Section -->
+    <section class="relative z-10 py-24">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="section-title mb-10">WHY RIC IS DIFFERENT</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="font-display text-gray-300 text-lg space-y-6">
+                    <p>Traditional security asks: <span class="text-white italic">“Is there a vulnerability?”</span></p>
+                    <p>RIC asks: <span class="text-white italic">“Can this system fail under real-world
+                            conditions?”</span></p>
+                </div>
+                <div class="glass-panel p-8">
+                    <h3 class="font-orbitron text-white mb-4">RIC FOCUSES ON:</h3>
+                    <ul class="space-y-3 font-mono text-sm text-gray-300">
+                        <li>> System invariants, not static rules</li>
+                        <li>> Workflow and state transitions</li>
+                        <li>> Release-induced regressions</li>
+                        <li>> Evidence-backed claims only</li>
+                    </ul>
+                    <div class="mt-6 pt-6 border-t border-white/10 text-center font-bold text-white">
+                        NO GUESSES. NO NOISE. NO HALLUCINATIONS.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Drift Monitoring -->
     <section class="relative z-10 py-24 bg-white/5">
         <div class="max-w-6xl mx-auto px-6">
-            <h2 class="section-title mb-10">DRIFT MONITORING</h2>
+            <h2 class="section-title mb-10">DETECT INTEGRITY DRIFT BEFORE IT SHIPS</h2>
             <div class="glass-panel p-10">
-                <p class="text-gray-300 font-display leading-relaxed">
-                    Most breaches and revenue leaks happen <span class="text-white">after a release</span>.
-                    RIC compares runs to detect integrity drift before production.
+                <p class="text-center text-gray-300 font-display leading-relaxed mb-10">
+                    Most incidents are regressions. RIC compares each run against previous releases.
+                    You see exactly when integrity decays — <span class="text-white">not after production</span>.
                 </p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div class="p-6 border border-white/10 bg-black/20">
                         <div class="font-mono text-xs text-green-400">NEW</div>
-                        <div class="font-orbitron text-white mt-2">Regressions</div>
-                        <p class="text-sm text-gray-400 mt-2">Introduced since the last run.</p>
+                        <div class="font-orbitron text-white mt-2">Integrity Failures</div>
+                        <p class="text-sm text-gray-400 mt-2">Introduced this week.</p>
                     </div>
                     <div class="p-6 border border-white/10 bg-black/20">
                         <div class="font-mono text-xs text-blue-400">FIXED</div>
-                        <div class="font-orbitron text-white mt-2">Verified Closures</div>
-                        <p class="text-sm text-gray-400 mt-2">Proof the gap is resolved.</p>
+                        <div class="font-orbitron text-white mt-2">Verified Gaps</div>
+                        <p class="text-sm text-gray-400 mt-2">Resolved since last release.</p>
                     </div>
                     <div class="p-6 border border-white/10 bg-black/20">
                         <div class="font-mono text-xs text-yellow-400">UNCHANGED</div>
                         <div class="font-orbitron text-white mt-2">Persistent Risks</div>
-                        <p class="text-sm text-gray-400 mt-2">Known integrity gaps still present.</p>
+                        <p class="text-sm text-gray-400 mt-2">Remain unresolved.</p>
                     </div>
-                </div>
-                <div class="mt-10 flex flex-col md:flex-row gap-4 justify-center">
-                    <a class="px-8 py-4 bg-white text-black font-orbitron font-bold tracking-wider hover:bg-gray-200 transition-colors text-center"
-                        href="pricing.html">VIEW PRICING</a>
-                    <a class="px-8 py-4 border border-white/20 hover:border-white/60 text-white font-orbitron font-bold tracking-wider transition-colors text-center"
-                        href="reports.html">SEE REPORTS</a>
                 </div>
             </div>
         </div>

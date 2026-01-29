@@ -58,75 +58,106 @@
             <source src="assets/hero-video.mp4" type="video/mp4" />
         </video>
     </div>
+    <!-- Hero -->
     <main class="relative z-10 pt-40 pb-20 px-6">
-        <div class="max-w-4xl mx-auto">
-            <h1 class="hero-title animate-fade-in-up">HOW IT WORKS</h1>
-            <div class="glass-panel p-8 md:p-12 mb-12 animate-fade-in-up">
-                <h2 class="font-orbitron text-2xl mb-6">RELEASE INTEGRITY PIPELINE</h2>
-                <div class="space-y-6 font-display text-gray-300">
-                    <div class="flex gap-4">
-                        <div class="font-mono text-white/50">01</div>
-                        <p>You provide an authorized staging or preview environment.</p>
-                    </div>
-                    <div class="flex gap-4">
-                        <div class="font-mono text-white/50">02</div>
-                        <p>RIC executes protocol-style workflows across auth, billing, exports, and role boundaries.</p>
-                    </div>
-                    <div class="flex gap-4">
-                        <div class="font-mono text-white/50">03</div>
-                        <p>Evidence is captured automatically (Playwright traces, network logs, assertion output).</p>
-                    </div>
-                    <div class="flex gap-4">
-                        <div class="font-mono text-white/50">04</div>
-                        <p>Findings are classified as <span class="text-white">System Integrity Gaps</span> (not
-                            “bugs”).</p>
-                    </div>
-                    <div class="flex gap-4">
-                        <div class="font-mono text-white/50">05</div>
-                        <p>Drift compares runs to detect regressions introduced by releases.</p>
-                    </div>
-                </div>
-                <p class="mt-8 text-sm text-gray-400">
-                    RIC is designed for defensive assurance. Authorization-only. Evidence-only.
-                </p>
-            </div>
-            <div class="grid md:grid-cols-2 gap-8 mb-12">
-                <div class="glass-panel p-8">
-                    <h3 class="font-orbitron text-xl mb-4 text-white">EVIDENCE-ONLY RULE</h3>
-                    <p class="text-gray-400 text-sm mb-4">RIC does not report theoretical risk. Every finding must
-                        include:</p>
-                    <ul class="text-sm font-mono text-gray-300 space-y-2">
-                        <li>&gt; Trace evidence</li>
-                        <li>&gt; Network artifacts</li>
-                        <li>&gt; Assertion logs</li>
-                        <li>&gt; Reproducible workflow proof</li>
-                    </ul>
-                    <p class="mt-4 text-red-500 font-bold text-sm">NO EVIDENCE = UNKNOWN</p>
-                </div>
-                <div class="glass-panel p-8">
-                    <h3 class="font-orbitron text-xl mb-4 text-white">MINIMAL OVERHEAD</h3>
-                    <p class="text-gray-400 text-sm mb-4">No meetings required. You receive:</p>
-                    <ul class="text-sm font-mono text-gray-300 space-y-2">
-                        <li>&gt; Integrity Snapshot report</li>
-                        <li>&gt; Evidence links for every claim</li>
-                        <li>&gt; Drift summary (NEW / FIXED / UNCHANGED)</li>
-                        <li>&gt; Escalation only for critical integrity breaks</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="glass-panel p-8 md:p-12">
-                <h2 class="font-orbitron text-2xl mb-6">SCOPE, BY DESIGN</h2>
-                <p class="text-gray-300 font-display leading-relaxed">
-                    RIC focuses on invariants that fail under pressure: session state, authorization boundaries,
-                    idempotency, exports, and sensitive change workflows.
-                </p>
-                <p class="mt-6 text-gray-400 text-sm">
-                    Want a classic pentest? Use a pentest. Want release-time integrity proof with drift detection? Use
-                    RIC.
-                </p>
-            </div>
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="hero-title mb-8 animate-fade-in-up delay-100">HOW RELEASE INTEGRITY MONITORING WORKS</h1>
+            <p
+                class="max-w-3xl mx-auto text-xl md:text-2xl font-display text-gray-300 mb-12 leading-relaxed animate-fade-in-up delay-200">
+                Wadelabs RIC verifies the integrity guarantees your SaaS must never break — and detects drift every
+                release
+                with evidence.
+            </p>
         </div>
     </main>
+
+    <!-- Process Section -->
+    <section class="relative z-10 py-24 bg-black/50 backdrop-blur-sm border-t border-white/10">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="section-title mb-10">THE RELEASE INTEGRITY PIPELINE</h2>
+            <div class="space-y-6">
+                <div class="glass-panel p-8 flex items-start gap-6">
+                    <div class="font-orbitron text-4xl text-white/20">01</div>
+                    <div>
+                        <h3 class="font-orbitron text-xl text-white mb-2">STAGING AUTHORIZATION</h3>
+                        <p class="text-gray-400 font-display">You provide an authorized staging or preview environment.
+                        </p>
+                    </div>
+                </div>
+                <div class="glass-panel p-8 flex items-start gap-6">
+                    <div class="font-orbitron text-4xl text-white/20">02</div>
+                    <div>
+                        <h3 class="font-orbitron text-xl text-white mb-2">INVARIANT EXECUTION</h3>
+                        <p class="text-gray-400 font-display">RIC executes invariant workflows across auth, billing,
+                            export, and role boundaries.</p>
+                    </div>
+                </div>
+                <div class="glass-panel p-8 flex items-start gap-6">
+                    <div class="font-orbitron text-4xl text-white/20">03</div>
+                    <div>
+                        <h3 class="font-orbitron text-xl text-white mb-2">ARTIFACT COLLECTION</h3>
+                        <p class="text-gray-400 font-display">Evidence artifacts are collected automatically (trace,
+                            network, assertions).</p>
+                    </div>
+                </div>
+                <div class="glass-panel p-8 flex items-start gap-6">
+                    <div class="font-orbitron text-4xl text-white/20">04</div>
+                    <div>
+                        <h3 class="font-orbitron text-xl text-white mb-2">CLASSIFICATION</h3>
+                        <p class="text-gray-400 font-display">Findings are classified as <span class="text-white">System
+                                Integrity Gaps</span>, not “bugs”.</p>
+                    </div>
+                </div>
+                <div class="glass-panel p-8 flex items-start gap-6">
+                    <div class="font-orbitron text-4xl text-white/20">05</div>
+                    <div>
+                        <h3 class="font-orbitron text-xl text-white mb-2">DRIFT DETECTION</h3>
+                        <p class="text-gray-400 font-display">Comparison against previous runs to catch regressions
+                            before production.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Evidence & Overhead -->
+    <section class="relative z-10 py-24">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="section-title mb-10">EVIDENCE-ONLY FINDINGS</h2>
+                    <div class="glass-panel p-8 h-full">
+                        <p class="text-gray-300 font-display leading-relaxed mb-6">
+                            RIC does not report theoretical risk. Every finding must include:
+                        </p>
+                        <ul class="space-y-3 font-mono text-sm text-gray-300 mb-6">
+                            <li>> Playwright trace</li>
+                            <li>> Network artifacts</li>
+                            <li>> Assertion logs</li>
+                            <li>> Reproducible workflow proof</li>
+                        </ul>
+                        <p class="text-gray-400 text-sm">
+                            If evidence is insufficient, the result is classified as <span
+                                class="text-white">Unknown</span> — not assumed.
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="section-title mb-10">MINIMAL OPERATIONAL OVERHEAD</h2>
+                    <div class="glass-panel p-8 h-full">
+                        <p class="text-gray-300 font-display leading-relaxed mb-6">
+                            No meetings required. You receive:
+                        </p>
+                        <ul class="space-y-3 font-mono text-sm text-gray-300">
+                            <li>> A weekly integrity snapshot</li>
+                            <li>> Escalation only for critical failures</li>
+                            <li>> Confirmation after fixes are retested</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <footer class="relative z-10 py-24 text-center border-t border-white/10">
         <h2 class="font-orbitron text-4xl mb-8 text-white drop-shadow-lg">STOP SHIPPING BLIND.</h2>
         <a class="inline-block px-12 py-5 bg-white text-black font-bold font-orbitron tracking-wider hover:bg-gray-200 transition-colors"

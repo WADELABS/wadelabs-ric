@@ -57,60 +57,108 @@
             <source src="assets/hero-video.mp4" type="video/mp4" />
         </video>
     </div>
+    <!-- Hero -->
     <main class="relative z-10 pt-40 pb-20 px-6">
-        <div class="max-w-4xl mx-auto">
-            <h1 class="hero-title animate-fade-in-up">TRUST</h1>
-            <p class="max-w-3xl font-display text-gray-300 mt-6 mb-12 leading-relaxed">
-                RIC is built for defensive assurance: authorization-only execution, evidence-backed claims, and
-                audit-ready reporting.
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="hero-title mb-8 animate-fade-in-up delay-100">AUTHORIZED. DEFENSIVE. EVIDENCE-BASED.</h1>
+            <p
+                class="max-w-3xl mx-auto text-xl md:text-2xl font-display text-gray-300 mb-12 leading-relaxed animate-fade-in-up delay-200">
+                RIC operates with the precision of a test suite and the safety of a defensive monitor. We do not
+                exploit. We verify.
             </p>
-            <div class="grid md:grid-cols-2 gap-8 mb-12">
+        </div>
+    </main>
+
+    <!-- Trust Pillars -->
+    <section class="relative z-10 py-24 bg-black/50 backdrop-blur-sm border-t border-white/10">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div class="glass-panel p-8">
-                    <h2 class="font-orbitron text-xl text-white mb-4">AUTHORIZED TARGETS ONLY</h2>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        RIC runs only against environments you are authorized to test (typically staging/preview).
-                        No scanning of third-party systems without explicit permission.
+                    <h2 class="font-orbitron text-2xl text-white mb-6">STRICT AUTHORIZATION</h2>
+                    <p class="text-gray-300 font-display leading-relaxed mb-6">
+                        RIC is not a "scan-the-internet" bot. We only execute against environments where:
                     </p>
+                    <ul class="space-y-4 font-mono text-sm text-gray-300">
+                        <li class="flex items-start gap-3">
+                            <span class="text-green-500">></span>
+                            <span>You have explicitly authorized our IP ranges.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-green-500">></span>
+                            <span>Domain ownership works via DNS TXT or File verification.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-green-500">></span>
+                            <span>Target environments are designated as Staging/QA (recommended).</span>
+                        </li>
+                    </ul>
                 </div>
                 <div class="glass-panel p-8">
-                    <h2 class="font-orbitron text-xl text-white mb-4">EVIDENCE FOR EVERY CLAIM</h2>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        RIC does not make claims without artifacts. Traces, network logs, and assertion outputs are
-                        attached.
-                        No evidence = Unknown.
+                    <h2 class="font-orbitron text-2xl text-white mb-6">DATA HANDLING</h2>
+                    <p class="text-gray-300 font-display leading-relaxed mb-6">
+                        Evidence artifacts (traces, logs) are sensitive. We treat them as such:
                     </p>
-                </div>
-            </div>
-            <div class="glass-panel p-10 mb-12">
-                <h2 class="font-orbitron text-xl text-white mb-4">DEFENSIVE BY DESIGN</h2>
-                <p class="text-gray-300 font-display leading-relaxed">
-                    RIC validates integrity guarantees and regression drift. It does not provide exploit tooling or
-                    step-by-step abuse instructions.
-                    The goal is prevention: catch integrity decay before production.
-                </p>
-            </div>
-            <div class="glass-panel p-10">
-                <h2 class="font-orbitron text-xl text-white mb-4">FAQ</h2>
-                <div class="space-y-6 text-gray-300 font-display">
-                    <div>
-                        <div class="font-orbitron text-white mb-2">Is this a vulnerability scanner?</div>
-                        <p class="text-gray-400 text-sm">No. RIC focuses on workflow invariants and system integrity
-                            gaps that surface under real user behavior and release drift.</p>
-                    </div>
-                    <div>
-                        <div class="font-orbitron text-white mb-2">Does RIC map to standards?</div>
-                        <p class="text-gray-400 text-sm">Yes. Findings can map to OWASP ASVS and NIST 800-53 for audit
-                            alignment.</p>
-                    </div>
-                    <div>
-                        <div class="font-orbitron text-white mb-2">What do you need from us?</div>
-                        <p class="text-gray-400 text-sm">A target URL, authorization confirmation, and (if needed) test
-                            credentials in a scoped staging environment.</p>
-                    </div>
+                    <ul class="space-y-4 font-mono text-sm text-gray-300">
+                        <li class="flex items-start gap-3">
+                            <span class="text-blue-500">></span>
+                            <span>AES-256 Encryption at rest for all evidence bundles.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-blue-500">></span>
+                            <span>Short-lived retention policies (customizable).</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-blue-500">></span>
+                            <span>RBAC for accessing Reports and Findings.</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </main>
+    </section>
+
+    <!-- Scope & Methods -->
+    <section class="relative z-10 py-24">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="section-title mb-12 text-center">OPERATIONAL SCOPE</h2>
+            <div class="glass-panel p-10">
+                <div class="mb-10 text-center">
+                    <p class="text-lg text-white font-orbitron mb-4">WE DO NOT:</p>
+                    <div class="flex flex-wrap justify-center gap-4 font-mono text-sm text-gray-400">
+                        <span class="px-3 py-1 bg-red-900/20 border border-red-500/30 rounded">DDoS</span>
+                        <span class="px-3 py-1 bg-red-900/20 border border-red-500/30 rounded">Social Engineer</span>
+                        <span class="px-3 py-1 bg-red-900/20 border border-red-500/30 rounded">Exfiltrate User
+                            DBs</span>
+                        <span class="px-3 py-1 bg-red-900/20 border border-red-500/30 rounded">Deface</span>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <p class="text-lg text-white font-orbitron mb-4">WE DO:</p>
+                    <div class="flex flex-wrap justify-center gap-4 font-mono text-sm text-gray-400">
+                        <span class="px-3 py-1 bg-green-900/20 border border-green-500/30 rounded">Verify Logic</span>
+                        <span class="px-3 py-1 bg-green-900/20 border border-green-500/30 rounded">Check
+                            Boundaries</span>
+                        <span class="px-3 py-1 bg-green-900/20 border border-green-500/30 rounded">Detect Drift</span>
+                        <span class="px-3 py-1 bg-green-900/20 border border-green-500/30 rounded">Prove
+                            Integrity</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center">
+                <p class="text-gray-400 text-sm mb-6 max-w-2xl mx-auto">
+                    Security is trust. We earn it by being transparent about what we run, how we run it, and proving it
+                    with logs.
+                </p>
+                <div class="flex flex-col md:flex-row justify-center gap-4">
+                    <a class="px-8 py-4 bg-white text-black font-orbitron font-bold tracking-wider hover:bg-gray-200 transition-colors"
+                        href="mailto:security@wadelabs.io">
+                        CONTACT SECURITY TEAM
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
     <footer class="relative z-10 py-24 text-center border-t border-white/10">
         <h2 class="font-orbitron text-4xl mb-8 text-white drop-shadow-lg">STOP SHIPPING BLIND.</h2>
         <a class="inline-block px-12 py-5 bg-white text-black font-bold font-orbitron tracking-wider hover:bg-gray-200 transition-colors"
